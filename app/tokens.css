@@ -1,0 +1,137 @@
+/* ============================================================
+   MAZOLOGIC — Design System 3 · CSS Custom Properties
+   Light-first Premium · Zinc neutrals · Warm Amber accent
+   ============================================================ */
+
+:root {
+  /* FONTS */
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  /* TYPE SCALE */
+  --fs-12: 0.75rem;   --fs-14: 0.875rem;  --fs-16: 1rem;      --fs-18: 1.125rem;
+  --fs-20: 1.25rem;   --fs-24: 1.5rem;    --fs-32: 2rem;      --fs-44: 2.75rem;
+  --fs-60: 3.75rem;   --fs-84: 5.25rem;
+  --lh-tight: 1.05;   --lh-snug: 1.2;     --lh-normal: 1.5;
+  --tracking-tight: -0.03em;  --tracking-snug: -0.015em;  --tracking-wide: 0.08em;
+  --fw-thin: 200;   --fw-light: 300;  --fw-regular: 400; --fw-medium: 500;
+  --fw-semi: 600;   --fw-bold: 700;   --fw-heavy: 800;   --fw-black: 900;
+
+  /* ZINC */
+  --zinc-50: #fafafa;   --zinc-100: #f4f4f5;  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;  --zinc-400: #a1a1aa;  --zinc-500: #71717a;
+  --zinc-600: #52525b;  --zinc-700: #3f3f46;  --zinc-800: #27272a;
+  --zinc-900: #18181b;  --zinc-950: #09090b;
+
+  /* AMBER */
+  --amber-50:  #fbf7ef;  --amber-100: #f3ead4;  --amber-200: #e8d5a6;
+  --amber-300: #d6b878;  --amber-400: #c39a52;  --amber-500: #a87c35;
+  --amber-600: #8a6326;  --amber-700: #6b4c1c;  --amber-800: #4f3714;  --amber-900: #2f220e;
+
+  /* STATUS */
+  --success: #3f9d5b;
+  --danger:  #d4443a;
+
+  /* ─── LIGHT SEMANTIC — DS2 palette (steel blue accent, cool neutrals) ─── */
+  color-scheme: light;
+
+  /* Surfaces — DS2 off-whites */
+  --bg-canvas:   #FBFBFD;   /* --paper */
+  --bg-base:     #F0F1F3;   /* --ink-50 / bg-alt */
+  --bg-surface:  #F5F6F8;   /* --linen */
+  --bg-raised:   #ffffff;
+  --bg-overlay:  #E8E9EB;   /* --ink-100 */
+  --bg-inverse:  #0A0B0A;   /* --ink-950 */
+
+  /* Foreground */
+  --fg-1: #0A0B0A;   /* --ink-950 */
+  --fg-2: #2E302E;   /* --ink-700 */
+  --fg-3: #6B6E6B;   /* --ink-500 */
+  --fg-4: #B5B7B4;   /* --ink-300 */
+  --fg-inverse: #FBFBFD;
+  --fg-accent: #1B3F5F;     /* --accent-700 */
+
+  /* Borders — DS2 crisp */
+  --border-subtle: rgba(10,11,10,0.06);
+  --border-soft:   rgba(10,11,10,0.10);
+  --border-strong: rgba(10,11,10,0.18);
+  --border-accent: rgba(27,63,95,0.35);
+
+  /* Accent — DS2 steel blue */
+  --accent:       #1B3F5F;   /* --accent-700 */
+  --accent-hover: #2A577F;   /* --accent-600 */
+  --accent-soft:  #E8EEF3;   /* --accent-50 */
+  --accent-glow:  rgba(27,63,95,0.35);
+
+  /* GRADIENTS — light / neutral */
+  --grad-surface:    linear-gradient(180deg, #FBFBFD 0%, #F0F1F3 100%);
+  --grad-hero-light: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(210,221,231,0.9), rgba(232,238,243,0.5) 40%, transparent 75%);
+  --grad-spot-warm:  radial-gradient(ellipse 70% 65% at 70% 50%, rgba(210,221,231,0.95), rgba(232,238,243,0.5) 35%, transparent 70%);
+  --grad-mesh-grid:  linear-gradient(rgba(10,11,10,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(10,11,10,0.06) 1px, transparent 1px);
+
+  /* SHADOWS — DS2 layered soft */
+  --shadow-xs:        0 1px 0 rgba(10,11,10,0.04), 0 2px 4px rgba(10,11,10,0.05);
+  --shadow-sm:        0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 2px rgba(10,11,10,0.05), 0 10px 20px -6px rgba(10,11,10,0.09);
+  --shadow-md:        0 1px 0 rgba(255,255,255,0.6) inset, 0 2px 4px rgba(10,11,10,0.07), 0 16px 32px -8px rgba(10,11,10,0.12);
+  --shadow-lg:        0 1px 0 rgba(255,255,255,0.7) inset, 0 4px 8px rgba(10,11,10,0.09), 0 24px 48px -10px rgba(10,11,10,0.14);
+  --shadow-floor:     0 1px 0 rgba(255,255,255,0.6) inset, 0 14px 30px -12px rgba(10,11,10,0.14), 0 30px 60px -20px rgba(10,11,10,0.10);
+  --shadow-inset-top: inset 0 1px 0 rgba(255,255,255,0.7);
+  --shadow-glow-accent: 0 0 0 3px rgba(27,63,95,0.18), 0 8px 24px rgba(27,63,95,0.22);
+
+  /* RADII */
+  --r-xs: 4px;  --r-sm: 6px;   --r-md: 10px; --r-lg: 14px;
+  --r-xl: 20px; --r-2xl: 28px; --r-pill: 999px;
+
+  /* SPACING */
+  --s-1:4px;  --s-2:8px;   --s-3:12px;  --s-4:16px;  --s-5:20px;  --s-6:24px;
+  --s-8:32px; --s-10:40px; --s-12:48px; --s-16:64px; --s-20:80px; --s-24:96px;
+
+  /* MOTION */
+  --ease-out:  cubic-bezier(0.22,1,0.36,1);
+  --ease-soft: cubic-bezier(0.4,0,0.2,1);
+  --dur-fast:  120ms;
+  --dur-base:  220ms;
+  --dur-slow:  420ms;
+
+  /* LAYOUT */
+  --container: 1200px;
+  --gutter:    24px;
+}
+
+/* ─── DARK SEMANTIC ─── */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-canvas:  #09090b;
+  --bg-base:    #0c0c0f;
+  --bg-surface: #141418;
+  --bg-raised:  #1c1c21;
+  --bg-overlay: #26262d;
+  --bg-inverse: #fafafa;
+
+  --fg-1: #fafafa;   --fg-2: #c4c4cb;   --fg-3: #8a8a94;   --fg-4: #5b5b64;
+  --fg-inverse: #0b0b0e;
+  --fg-accent: #6fa8d4;
+
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-soft:   rgba(255,255,255,0.10);
+  --border-strong: rgba(255,255,255,0.18);
+  --border-accent: rgba(62,110,153,0.45);
+
+  --accent:       #3E6E99;
+  --accent-hover: #2A577F;
+  --accent-soft:  rgba(27,63,95,0.22);
+  --accent-glow:  rgba(62,110,153,0.45);
+
+  --grad-hero-light: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(27,63,95,0.28), transparent 65%);
+  --grad-spot-warm:  radial-gradient(ellipse 60% 55% at 70% 50%, rgba(42,87,127,0.70), rgba(27,63,95,0) 60%);
+  --grad-mesh-grid:  linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+
+  --shadow-xs:        0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm:        0 2px 6px rgba(0,0,0,0.35);
+  --shadow-md:        0 8px 24px rgba(0,0,0,0.4);
+  --shadow-lg:        0 20px 50px rgba(0,0,0,0.55);
+  --shadow-floor:     0 30px 60px -10px rgba(0,0,0,0.6);
+  --shadow-inset-top: inset 0 1px 0 rgba(255,255,255,0.08);
+  --shadow-glow-accent: 0 0 0 1px rgba(62,110,153,0.40), 0 12px 50px rgba(27,63,95,0.45);
+}
