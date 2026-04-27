@@ -49,6 +49,7 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>("en");
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [heroVariantIdx, setHeroVariantIdx] = useState<number | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Quiz state
   const [quizPhase, setQuizPhase] = useState<"gate" | "quiz" | "results">("gate");
@@ -254,9 +255,48 @@ export default function Home() {
                 Light
               </button>
             </div>
-            <button className="btn btn-primary btn-sm">{t("nav.cta")}</button>
+            <button className="btn btn-primary btn-sm nav-cta-desktop">{t("nav.cta")}</button>
+            {/* Hamburger — mobile only */}
+            <button
+              className="hamburger"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(o => !o)}
+            >
+              <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>
+              <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>
+              <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>
+            </button>
           </div>
         </div>
+
+        {/* ── MOBILE MENU ── */}
+        {menuOpen && (
+          <div className="mobile-menu">
+            <a className="mobile-nav-link" href="#method" onClick={() => setMenuOpen(false)}>{t("nav.method")}</a>
+            <a className="mobile-nav-link" href="#process" onClick={() => setMenuOpen(false)}>{t("nav.process")}</a>
+            <a className="mobile-nav-link" href="#infra" onClick={() => setMenuOpen(false)}>{t("nav.infra")}</a>
+            <div className="mobile-menu-footer">
+              <div className="mobile-menu-toggles">
+                <div className="toggle-group lang" role="tablist" aria-label="Language">
+                  <button className={lang === "en" ? "active" : ""} onClick={() => switchLang("en")}>EN</button>
+                  <button className={lang === "pl" ? "active" : ""} onClick={() => switchLang("pl")}>PL</button>
+                </div>
+                <div className="toggle-group" role="tablist" aria-label="Theme">
+                  <button className={theme === "dark" ? "active" : ""} onClick={() => switchTheme("dark")}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    Dark
+                  </button>
+                  <button className={theme === "light" ? "active" : ""} onClick={() => switchTheme("light")}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+                    Light
+                  </button>
+                </div>
+              </div>
+              <button className="btn btn-primary" style={{ width: "100%" }} onClick={() => setMenuOpen(false)}>{t("nav.cta")}</button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* ── HERO ── */}
