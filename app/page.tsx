@@ -73,12 +73,20 @@ export default function Home() {
 
   // Init on mount
   useEffect(() => {
-    const savedLang = (localStorage.getItem("mazo-lang") as Lang) ?? "en";
-    const savedTheme = (localStorage.getItem("mazo-theme") as "dark" | "light") ?? "dark";
-    setLang(savedLang);
-    setTheme(savedTheme);
-    document.documentElement.setAttribute("data-theme", savedTheme);
-    const variants = STRINGS[savedLang].hero.h1variants;
+    // Lang: saved preference → browser language → fallback EN
+    const savedLang = localStorage.getItem("mazo-lang") as Lang | null;
+    const browserLang: Lang = navigator.language?.toLowerCase().startsWith("pl") ? "pl" : "en";
+    const initLang: Lang = savedLang ?? browserLang;
+
+    // Theme: saved preference → system prefers-color-scheme → fallback dark
+    const savedTheme = localStorage.getItem("mazo-theme") as "dark" | "light" | null;
+    const systemTheme: "dark" | "light" = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    const initTheme: "dark" | "light" = savedTheme ?? systemTheme;
+
+    setLang(initLang);
+    setTheme(initTheme);
+    document.documentElement.setAttribute("data-theme", initTheme);
+    const variants = STRINGS[initLang].hero.h1variants;
     setHeroVariantIdx(getHeroVariantIndex(variants.length));
   }, []);
 
