@@ -424,4 +424,21 @@
   .steps    { grid-template-columns: 1fr; }
   .comp-head, .comp-row { grid-template-columns: 1fr; gap: 6px; }
   .comp-label { display: none; }
+
+  /* Matrix — mobile fixes */
+  .matrix-wrap { padding: 16px; }
+  .matrix { aspect-ratio: auto; gap: 8px; }
+  .matrix-quadrant { padding: 12px; }
+  .matrix-label { font-size: 9px; }
+  .matrix-title { font-size: 13px; margin: 3px 0 0; }
+  .matrix-desc  { font-size: 11px; margin-top: 4px; }
+  /* Hide hover verdict on touch devices — no hover anyway */
+  .matrix-verdict { display: none; }
+  .matrix-quadrant:hover .matrix-labels { opacity: 1; }
+  .matrix-quadrant:hover { transform: none; }
+  /* q-quickwin — white text on blue bg */
+  .q-quickwin .matrix-label,
+  .q-quickwin .matrix-title,
+  .q-quickwin .matrix-desc,
+  .q-quickwin .matrix-foot { color: #ffffff; }
 }
