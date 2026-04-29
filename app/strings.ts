@@ -71,7 +71,7 @@ export const STRINGS = {
       h2a: "Four phases.", h2b: "Audit to handover.",
       phases: [
         { num: "PHASE 01", h: "Audit",    p: "A structured 30-minute session for SMBs, or 1–2 days on-site for larger organisations. You leave with an Impact-Effort Matrix and a clear scope." },
-        { num: "PHASE 02", h: "Build",    p: "We connect your data sources, clean your information layer, and train the AI on your business context — clients, history, and language." },
+        { num: "PHASE 02", h: "Build",    p: "We connect your data sources, organise your data, and deploy the full system — database, agent framework, and an AI agent you can talk to, delegate tasks to, and use to control your business processes." },
         { num: "PHASE 03", h: "Tune",     p: "14-day live calibration. We monitor every action, fine-tune the agent's logic, and push accuracy past 95% before handover." },
         { num: "PHASE 04", h: "Handover", p: "Full transfer: trained AI system, complete documentation, and a walkthrough session so your team runs it independently from day one." },
       ],
@@ -179,18 +179,18 @@ export const STRINGS = {
     spotlight: { left: "Gotowy na wdrożenie", right: "Systemu Operacyjnego AI?" },
     matrix: {
       eyebrow: "Audyt Architektury", h2a: "Zanim zbudujemy:", h2b: "jasny obraz tego, co warto automatyzować.",
-      lead: "Mapujemy Twoje operacje na cztery strefy — według kosztu, nakładu i zwrotu.",
+      lead: "Mapujemy Twoje operacje na cztery strefy — według kosztu, nakładu i zwrotu. Dokładnie wiesz, gdzie AI się opłaca, a czego nie warto wdrażać.",
       axisHigh: "Wysoki wpływ", axisLow: "Niski wpływ", axisEffortLow: "Niski nakład →", axisEffortHigh: "Wysoki nakład",
       q1tag: "Szybkie wygrane", q1title: "Szybkie wygrane", q1desc: "Szybki odzysk czasu. Wdrożenie 2–3 tyg., zwrot mierzalny do 4. tygodnia.", q1foot: "01 · zacznij tu",
       q2tag: "Strategiczne", q2title: "Rdzeń AI OS", q2desc: "Systemy o wysokiej dźwigni. Fundament, na którym stoi reszta biznesu.", q2foot: "02 · rdzeń AI OS",
       q3tag: "Uzupełnienia", q3title: "Później", q3desc: "Drobne zadania powtarzalne. Warte automatyzacji gdy rdzeń jest stabilny.",
-      q4tag: "Unikaj", q4title: "Odłóż", q4desc: "Dużo pracy, mały zwrot. Udokumentuj, zaparkuj, wróć później.",
+      q4tag: "Unikaj", q4title: "Odłóż", q4desc: "Dużo pracy, mały zwrot. Warto udokumentować i zostawić na później.",
     },
     process: {
       eyebrow: "Mapa wdrożenia", h2a: "Cztery fazy.", h2b: "Od audytu po przekazanie.",
       phases: [
         { num: "PHASE 01", h: "Audyt",       p: "Ustrukturyzowana sesja 30 minut dla MŚP lub 1–2 dni on-site dla większych firm." },
-        { num: "PHASE 02", h: "Budowanie",   p: "Łączymy źródła danych, czyścimy warstwę informacji i trenujemy AI na kontekście Twojego biznesu." },
+        { num: "PHASE 02", h: "Budowanie",   p: "Łączymy źródła danych, porządkujemy dane i wdrażamy kompletny system — bazę danych, framework agenta oraz agenta AI, z którym można rozmawiać, zlecać mu zadania i sterować procesami biznesowymi." },
         { num: "PHASE 03", h: "Kalibracja",  p: "14-dniowa kalibracja na żywo. Monitorujemy każde działanie i doprowadzamy dokładność powyżej 95%." },
         { num: "PHASE 04", h: "Przekazanie", p: "Pełny transfer: wytrenowany system AI, kompletna dokumentacja i sesja wdrożeniowa." },
       ],

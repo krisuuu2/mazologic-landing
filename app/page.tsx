@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { STRINGS, Lang } from "./strings";
+import { LightRays } from "./LightRays";
+import { DiaTextReveal } from "./DiaTextReveal";
+import { AgentOrb } from "./AgentOrb";
 
 // ── Quiz question definitions ──────────────────────────────────────────
 const QUIZ_QUESTIONS = [
@@ -301,13 +304,15 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section className="hero">
-        <div className="hero-glow"></div>
-        <div className="hero-grid"></div>
+        <LightRays
+          count={9}
+          color="rgba(107, 168, 212, 0.22)"
+          blur={42}
+          speed={13}
+          length="80vh"
+        />
         <div className="container hero-inner">
-          <span className="eyebrow-pill">
-            <span className="pulse"></span>
-            <span>{t("hero.eyebrow")}</span>
-          </span>
+          {/* eyebrow-pill hidden */}
           <h1>
             {heroVariant ? (
               <>
@@ -330,16 +335,8 @@ export default function Home() {
               {t("hero.cta")}
             </a>
           </div>
-          <div className="hero-chips">
-            <span className="chip"><span className="chip-dot green"></span>{t("hero.chip1")}</span>
-            <span className="chip">{t("hero.chip2")}</span>
-            <span className="chip">{t("hero.chip3")}</span>
-          </div>
-          <div className="hero-value-props">
-            <div className="vp-item"><span className="vp-dot">→</span><span>{t("hero.vp1")}</span></div>
-            <div className="vp-item"><span className="vp-dot">→</span><span>{t("hero.vp2")}</span></div>
-            <div className="vp-item"><span className="vp-dot">→</span><span>{t("hero.vp3")}</span></div>
-          </div>
+          {/* hero-chips hidden */}
+          {/* hero-value-props hidden */}
         </div>
       </section>
 
@@ -358,6 +355,7 @@ export default function Home() {
               { h: "method.card3h", p: "method.card3p", tag: "method.card3tag", icon: <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.44 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> },
             ].map((card, i) => (
               <div className="bento-card" key={i}>
+                <div className="bento-beam" aria-hidden="true"></div>
                 <div className="bento-visual">
                   <div className="mesh-bg"></div>
                   <div className="glyph circle">{card.icon}</div>
@@ -371,8 +369,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SOLUTION ── */}
-      <section className="section section-alt">
+      {/* ── SOLUTION ── hidden */}
+      {/* <section className="section section-alt">
         <div className="container">
           <div className="section-head">
             <span className="section-eyebrow">{t("solution.eyebrow")}</span>
@@ -392,35 +390,36 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* ── DIFFERENTIATOR ── */}
-      <section className="section">
+      {/* ── INFRA ── */}
+      <section className="section" id="infra">
         <div className="container">
-          <div className="diff-card">
-            <div className="diff-header">
-              <span className="diff-label">{t("diff.label")}</span>
-              <span className="diff-sub">{t("diff.subLabel")}</span>
-            </div>
-            <h2 className="diff-h2">
-              <span className="dim">{t("diff.h2a")}</span><span className="dim light">{t("diff.h2b")}</span><span className="dim">.</span><br />
-              <span>{t("diff.h2c")}</span><span className="accent-text">{t("diff.h2d")}</span>.
-            </h2>
-            <p className="diff-lead">{t("diff.lead")}</p>
-            <div className="comp-table">
-              <div className="comp-head">
-                <span></span>
-                <span>{t("diff.colOld")}</span>
-                <span className="accent-text">MazoLogic</span>
-              </div>
-              {STRINGS[lang].diff.rows.map((row, i) => (
-                <div className="comp-row" key={i}>
-                  <span className="comp-label">{row.label}</span>
-                  <span className="comp-usual">{row.old}</span>
-                  <span className="comp-us">{row.new}</span>
-                </div>
-              ))}
-            </div>
+          <div className="section-head">
+            <span className="section-eyebrow">{t("infra.eyebrow")}</span>
+            <h2><span>{t("infra.h2a")}</span> <span className="light">{t("infra.h2b")}</span></h2>
+            <p className="section-lead">{t("infra.lead")}</p>
+          </div>
+          <div className="infra-strip">
+            <span className="infra-chip"><img className="infra-logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" alt="Salesforce" />Salesforce</span>
+            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/hubspot/a1a1aa" alt="HubSpot" />HubSpot</span>
+            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/notion/a1a1aa" alt="Notion" />Notion</span>
+            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/airtable/a1a1aa" alt="Airtable" />Airtable</span>
+            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/postgresql/a1a1aa" alt="PostgreSQL" />PostgreSQL</span>
+            <span className="infra-chip">
+              <svg className="infra-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+              Slack
+            </span>
+            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/gmail/a1a1aa" alt="Gmail" />Gmail</span>
+            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/googlesheets/a1a1aa" alt="Google Sheets" />Google Sheets</span>
+            <span className="infra-chip">
+              <svg className="infra-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Custom API
+            </span>
+            <span className="infra-chip">
+              <svg className="infra-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              Your CRM
+            </span>
           </div>
         </div>
       </section>
@@ -509,18 +508,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SPOTLIGHT ── */}
-      <div className="spotlight-block">
-        <div className="grid-bg"></div>
-        <div className="warm-glow"></div>
-        <div className="container inner" style={{ flexDirection: "column", alignItems: "center", gap: "32px", textAlign: "center" }}>
-          <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px,4vw,52px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fafafa", lineHeight: 1.1, maxWidth: "700px" }}>
-            <span>{t("spotlight.left")}</span> <span style={{ color: "#6fa8d4" }}>{t("spotlight.right")}</span>
-          </p>
-          <a className="btn btn-primary btn-lg" href="https://calendar.app.google/ok4xj5QtxsRTCCoZ8" target="_blank" rel="noopener noreferrer" style={{ width: "auto" }}>{t("nav.cta")}</a>
-        </div>
-      </div>
-
       {/* ── MATRIX ── */}
       <section className="section section-alt" id="matrix">
         <div className="container">
@@ -601,6 +588,7 @@ export default function Home() {
           <div className="steps">
             {STRINGS[lang].process.phases.map((phase, i) => (
               <div className="step" key={i}>
+                <div className="step-beam" aria-hidden="true"></div>
                 <div className="step-num">{phase.num}</div>
                 <h4>{phase.h}</h4>
                 <p>{phase.p}</p>
@@ -610,37 +598,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── INFRA ── */}
-      <section className="section" id="infra">
+      {/* ── DIFFERENTIATOR ── */}
+      <section className="section">
         <div className="container">
-          <div className="section-head">
-            <span className="section-eyebrow">{t("infra.eyebrow")}</span>
-            <h2><span>{t("infra.h2a")}</span> <span className="light">{t("infra.h2b")}</span></h2>
-            <p className="section-lead">{t("infra.lead")}</p>
-          </div>
-          <div className="infra-strip">
-            <span className="infra-chip"><img className="infra-logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" alt="Salesforce" />Salesforce</span>
-            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/hubspot/a1a1aa" alt="HubSpot" />HubSpot</span>
-            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/notion/a1a1aa" alt="Notion" />Notion</span>
-            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/airtable/a1a1aa" alt="Airtable" />Airtable</span>
-            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/postgresql/a1a1aa" alt="PostgreSQL" />PostgreSQL</span>
-            <span className="infra-chip">
-              <svg className="infra-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
-              Slack
-            </span>
-            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/gmail/a1a1aa" alt="Gmail" />Gmail</span>
-            <span className="infra-chip"><img className="infra-logo" src="https://cdn.simpleicons.org/googlesheets/a1a1aa" alt="Google Sheets" />Google Sheets</span>
-            <span className="infra-chip">
-              <svg className="infra-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              Custom API
-            </span>
-            <span className="infra-chip">
-              <svg className="infra-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-              Your CRM
-            </span>
+          <div className="diff-card">
+            <div className="diff-header">
+              <span className="diff-label">{t("diff.label")}</span>
+              <span className="diff-sub">{t("diff.subLabel")}</span>
+            </div>
+            <h2 className="diff-h2">
+              <span className="dim">{t("diff.h2a")}</span><span className="dim light">{t("diff.h2b")}</span><span className="dim">.</span><br />
+              <span>{t("diff.h2c")}</span><span className="accent-text">{t("diff.h2d")}</span>.
+            </h2>
+            <p className="diff-lead">{t("diff.lead")}</p>
+            <div className="comp-table">
+              <div className="comp-head">
+                <span></span>
+                <span>{t("diff.colOld")}</span>
+                <span className="accent-text">MazoLogic</span>
+              </div>
+              {STRINGS[lang].diff.rows.map((row, i) => (
+                <div className="comp-row" key={i}>
+                  <span className="comp-label">{row.label}</span>
+                  <span className="comp-usual">{row.old}</span>
+                  <span className="comp-us">{row.new}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+      {/* ── SPOTLIGHT ── */}
+      <div className="spotlight-block">
+        <LightRays
+          count={10}
+          color="rgba(107, 168, 212, 0.18)"
+          blur={44}
+          speed={11}
+          length="100%"
+          className="spotlight-rays"
+        />
+        <div className="container inner" style={{ flexDirection: "column", alignItems: "center", gap: "32px", textAlign: "center" }}>
+          <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px,4vw,52px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fafafa", lineHeight: 1.1, maxWidth: "700px" }}>
+            <span>{t("spotlight.left")}</span>{" "}
+            <DiaTextReveal
+              text={t("spotlight.right")}
+              colors={["#c39a52", "#e8d5a6", "#ffffff", "#a8d4f5", "#6fa8d4"]}
+              textColor="#6fa8d4"
+              duration={1.8}
+              delay={0.3}
+            />
+          </p>
+          <a className="btn btn-primary btn-lg" href="https://calendar.app.google/ok4xj5QtxsRTCCoZ8" target="_blank" rel="noopener noreferrer" style={{ width: "auto" }}>{t("nav.cta")}</a>
+        </div>
+      </div>
 
       {/* ── SCORECARD — hidden until quiz feature is ready ── */}
       {/* <section className="section section-dark" id="scorecard"> ... </section> */}
