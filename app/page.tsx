@@ -255,7 +255,7 @@ export default function Home() {
                 Light
               </button>
             </div>
-            <button className="btn btn-primary btn-sm nav-cta-desktop">{t("nav.cta")}</button>
+            <a className="btn btn-primary btn-sm nav-cta-desktop" href="https://calendar.app.google/ok4xj5QtxsRTCCoZ8" target="_blank" rel="noopener noreferrer">{t("nav.cta")}</a>
             {/* Hamburger — mobile only */}
             <button
               className="hamburger"
@@ -293,7 +293,7 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-              <button className="btn btn-primary" style={{ width: "100%" }} onClick={() => setMenuOpen(false)}>{t("nav.cta")}</button>
+              <a className="btn btn-primary" href="https://calendar.app.google/ok4xj5QtxsRTCCoZ8" target="_blank" rel="noopener noreferrer" style={{ width: "100%" }} onClick={() => setMenuOpen(false)}>{t("nav.cta")}</a>
             </div>
           </div>
         )}
@@ -326,9 +326,9 @@ export default function Home() {
             {heroVariant ? heroVariant.sub : t("hero.sub")}
           </p>
           <div className="hero-ctas">
-            <button className="btn btn-primary btn-lg hero-main-cta" onClick={() => document.getElementById("scorecard")?.scrollIntoView({ behavior: "smooth" })}>
+            <a className="btn btn-primary btn-lg hero-main-cta" href="https://calendar.app.google/ok4xj5QtxsRTCCoZ8" target="_blank" rel="noopener noreferrer">
               {t("hero.cta")}
-            </button>
+            </a>
           </div>
           <div className="hero-chips">
             <span className="chip"><span className="chip-dot green"></span>{t("hero.chip1")}</span>
@@ -517,7 +517,7 @@ export default function Home() {
           <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px,4vw,52px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fafafa", lineHeight: 1.1, maxWidth: "700px" }}>
             <span>{t("spotlight.left")}</span> <span style={{ color: "#6fa8d4" }}>{t("spotlight.right")}</span>
           </p>
-          <button className="btn btn-primary btn-lg" style={{ width: "auto" }}>{t("nav.cta")}</button>
+          <a className="btn btn-primary btn-lg" href="https://calendar.app.google/ok4xj5QtxsRTCCoZ8" target="_blank" rel="noopener noreferrer" style={{ width: "auto" }}>{t("nav.cta")}</a>
         </div>
       </div>
 
@@ -642,112 +642,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SCORECARD ── */}
-      <section className="section section-dark" id="scorecard">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-eyebrow">{t("scorecard.eyebrow")}</span>
-            <h2><span>{t("scorecard.h2a")}</span> <span className="light">{t("scorecard.h2b")}</span></h2>
-            <p className="section-lead">{t("scorecard.lead")}</p>
-          </div>
-
-          <div className="quiz-shell">
-            {/* GATE */}
-            {quizPhase === "gate" && (
-              <div className="quiz-gate">
-                <h3 className="gate-title">{t("gate.title")}</h3>
-                <p className="gate-sub">{t("gate.sub")}</p>
-                <input className="gate-input" type="text" id="gate-name" placeholder={t("gate.name")} />
-                <input className="gate-input" type="email" id="gate-email" placeholder={t("gate.email")} />
-                <button className="btn btn-primary btn-lg" onClick={startQuiz}>{t("gate.cta")}</button>
-                <p className="gate-privacy">{t("gate.privacy")}</p>
-              </div>
-            )}
-
-            {/* QUIZ */}
-            {quizPhase === "quiz" && (
-              <>
-                <div className="quiz-progress-wrap">
-                  <div className="quiz-progress-bar" style={{ width: `${((currentQ - 1) / TOTAL_Q) * 100}%` }}></div>
-                </div>
-                <div className="quiz-meta">
-                  <span className="quiz-counter">Question {currentQ} of {TOTAL_Q}</span>
-                  <span className="quiz-section-label">{currentSection}</span>
-                </div>
-                {QUIZ_QUESTIONS.map((qDef) => (
-                  <div key={qDef.q} className={`quiz-q${currentQ === qDef.q ? " active" : ""}`}>
-                    <h3 className="quiz-question">{t(`${qDef.key}.q`)}</h3>
-                    {qDef.q < 15 ? (
-                      <div className="quiz-options">
-                        {qDef.options.map((opt, idx) => (
-                          <button
-                            key={idx}
-                            className={`quiz-opt${selectedOpt === idx && currentQ === qDef.q ? " selected" : ""}`}
-                            onClick={() => handleOptClick(qDef.q, opt.score, idx)}
-                          >
-                            {t(opt.key)}
-                          </button>
-                        ))}
-                      </div>
-                    ) : (
-                      <>
-                        <textarea className="quiz-textarea" value={q15Text} onChange={e => setQ15Text(e.target.value)} placeholder="E.g. industry, team size, urgent deadline, specific process you want to fix..." />
-                        <button className="btn btn-primary btn-lg" onClick={submitScorecard}>{t("q15.cta")}</button>
-                      </>
-                    )}
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ── RESULTS ── */}
-      {quizPhase === "results" && results && (
-        <section className="section" id="results-section">
-          <div className="container">
-            <div className="results-wrap">
-              <div className="score-display">
-                <div className="score-ring-wrap">
-                  <svg className="score-ring" viewBox="0 0 120 120" width="180" height="180">
-                    <circle className="ring-bg" cx="60" cy="60" r="50" fill="none" strokeWidth="8" />
-                    <circle className="ring-fill" cx="60" cy="60" r="50" fill="none" strokeWidth="8"
-                      stroke={results.tierColor}
-                      strokeDasharray="314"
-                      strokeDashoffset={314 - (314 * results.score / 20)}
-                      strokeLinecap="round"
-                      transform="rotate(-90 60 60)"
-                      style={{ transition: "stroke-dashoffset 0.8s ease" }}
-                    />
-                  </svg>
-                  <div className="score-center">
-                    <span className="score-num">{results.score}</span>
-                    <span className="score-label">/ 20</span>
-                  </div>
-                </div>
-                <div className="score-tier" style={{ color: results.tierColor }}>{results.tier}</div>
-                <p className="score-desc">{results.desc}</p>
-              </div>
-              <div className="insights-wrap">
-                <h3 className="insights-title">{t("results.insightsTitle")}</h3>
-                <div className="insights-grid">
-                  {results.insights.map((ins, i) => (
-                    <div className="insight-item" key={i}>
-                      <div className="insight-icon">{ins.icon}</div>
-                      <div className="insight-text">
-                        <h4>{ins.h}</h4>
-                        <p>{ins.p}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="result-cta-wrap" dangerouslySetInnerHTML={{ __html: results.ctaHTML }} />
-            </div>
-          </div>
-        </section>
-      )}
+      {/* ── SCORECARD — hidden until quiz feature is ready ── */}
+      {/* <section className="section section-dark" id="scorecard"> ... </section> */}
 
       {/* ── FOOTER ── */}
       <footer className="footer">
