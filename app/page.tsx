@@ -5,6 +5,7 @@ import { STRINGS, Lang } from "./strings";
 import { LightRays } from "./LightRays";
 import { DiaTextReveal } from "./DiaTextReveal";
 import { AgentOrb } from "./AgentOrb";
+import { TextAnimate } from "./TextAnimate";
 
 // ── Quiz question definitions ──────────────────────────────────────────
 const QUIZ_QUESTIONS = [
@@ -316,14 +317,15 @@ export default function Home() {
           <h1>
             {heroVariant ? (
               <>
-                <span dangerouslySetInnerHTML={{ __html: heroVariant.h1a }} />
+                <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0}>{heroVariant.h1a.replace(/<[^>]+>/g, "")}</TextAnimate>
                 <br />
-                <span className="h1-light" dangerouslySetInnerHTML={{ __html: heroVariant.h1b }} />
+                <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.2} className="h1-light">{heroVariant.h1b.replace(/<[^>]+>/g, "")}</TextAnimate>
               </>
             ) : (
               <>
-                <span>{t("hero.h1a")}</span><br />
-                <span className="h1-light">{t("hero.h1b")}</span>
+                <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0}>{t("hero.h1a")}</TextAnimate>
+                <br />
+                <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.2} className="h1-light">{t("hero.h1b")}</TextAnimate>
               </>
             )}
           </h1>
@@ -345,7 +347,11 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="section-eyebrow">{t("method.eyebrow")}</span>
-            <h2><span>{t("method.h2a")}</span> <span className="light">{t("method.h2b")}</span></h2>
+            <h2>
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("method.h2a")}</TextAnimate>
+              {" "}
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("method.h2b")}</TextAnimate>
+            </h2>
             <p className="section-lead">{t("method.lead")}</p>
           </div>
           <div className="bento">
@@ -397,7 +403,11 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="section-eyebrow">{t("infra.eyebrow")}</span>
-            <h2><span>{t("infra.h2a")}</span> <span className="light">{t("infra.h2b")}</span></h2>
+            <h2>
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("infra.h2a")}</TextAnimate>
+              {" "}
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("infra.h2b")}</TextAnimate>
+            </h2>
             <p className="section-lead">{t("infra.lead")}</p>
           </div>
           <div className="infra-strip">
@@ -429,7 +439,11 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="section-eyebrow">{t("caseStudy.eyebrow")}</span>
-            <h2><span>{t("caseStudy.h2a")}</span> <span className="light">{t("caseStudy.h2b")}</span></h2>
+            <h2>
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("caseStudy.h2a")}</TextAnimate>
+              {" "}
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("caseStudy.h2b")}</TextAnimate>
+            </h2>
           </div>
           <div className="case-card">
             <div className="case-light">
@@ -513,7 +527,11 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="section-eyebrow">{t("matrix.eyebrow")}</span>
-            <h2><span>{t("matrix.h2a")}</span> <span className="light">{t("matrix.h2b")}</span></h2>
+            <h2>
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("matrix.h2a")}</TextAnimate>
+              {" "}
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("matrix.h2b")}</TextAnimate>
+            </h2>
             <p className="section-lead">{t("matrix.lead")}</p>
           </div>
           <div className="matrix-wrap">
@@ -583,7 +601,11 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="section-eyebrow">{t("process.eyebrow")}</span>
-            <h2><span>{t("process.h2a")}</span> <span className="light">{t("process.h2b")}</span></h2>
+            <h2>
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("process.h2a")}</TextAnimate>
+              {" "}
+              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("process.h2b")}</TextAnimate>
+            </h2>
           </div>
           <div className="steps">
             {STRINGS[lang].process.phases.map((phase, i) => (
