@@ -8,7 +8,7 @@ interface Segment {
 }
 
 interface HeroAnimateProps {
-  segments: Segment[]
+  segments: readonly Segment[]
   className?: string
   delay?: number
   accentColor?: string
