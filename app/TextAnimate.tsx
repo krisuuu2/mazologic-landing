@@ -10,15 +10,9 @@ interface TextAnimateProps {
   by?: "word" | "character"
   delay?: number
   once?: boolean
-}
-
-const containerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.06,
-    },
-  },
+  // "viewport" = whileInView (for section headings scrolled into view)
+  // "mount"    = animate immediately on mount (for hero, above the fold)
+  trigger?: "viewport" | "mount"
 }
 
 const wordVariants: Variants = {
@@ -38,13 +32,14 @@ const TextAnimateBase = ({
   by = "word",
   delay = 0,
   once = true,
+  trigger = "viewport",
 }: TextAnimateProps) => {
   const MotionTag = motion[Tag] as typeof motion.span
 
   const segments =
     by === "word" ? children.split(/(\s+)/) : children.split("")
 
-  const containerWithDelay: Variants = {
+  const containerVariants: Variants = {
     hidden: {},
     show: {
       transition: {
@@ -54,13 +49,16 @@ const TextAnimateBase = ({
     },
   }
 
+  const motionProps =
+    trigger === "mount"
+      ? { initial: "hidden", animate: "show" }
+      : { initial: "hidden", whileInView: "show", viewport: { once } }
+
   return (
     <MotionTag
       className={className}
-      variants={containerWithDelay}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once }}
+      variants={containerVariants}
+      {...motionProps}
     >
       {segments.map((seg, i) => (
         <motion.span

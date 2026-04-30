@@ -320,13 +320,13 @@ export default function Home() {
               <>
                 <HeroAnimate segments={heroVariant.h1a} delay={0} />
                 <br />
-                <TextAnimate as="span" by="word" once={true} delay={0.4} className="h1-light">{heroVariant.h1b}</TextAnimate>
+                <TextAnimate as="span" by="word" trigger="mount" delay={0.4} className="h1-light">{heroVariant.h1b}</TextAnimate>
               </>
             ) : (
               <>
                 <HeroAnimate segments={[{ t: t("hero.h1a") }]} delay={0} />
                 <br />
-                <TextAnimate as="span" by="word" once={true} delay={0.4} className="h1-light">{t("hero.h1b")}</TextAnimate>
+                <TextAnimate as="span" by="word" trigger="mount" delay={0.4} className="h1-light">{t("hero.h1b")}</TextAnimate>
               </>
             )}
           </h1>
