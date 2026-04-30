@@ -351,7 +351,7 @@ export default function Home() {
             <h2>
               <TextAnimate as="span" by="word" once={true}>{t("method.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("method.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.5} className="light">{t("method.h2b")}</TextAnimate>
             </h2>
             <p className="section-lead">{t("method.lead")}</p>
           </div>
@@ -407,7 +407,7 @@ export default function Home() {
             <h2>
               <TextAnimate as="span" by="word" once={true}>{t("infra.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("infra.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.5} className="light">{t("infra.h2b")}</TextAnimate>
             </h2>
             <p className="section-lead">{t("infra.lead")}</p>
           </div>
@@ -443,7 +443,7 @@ export default function Home() {
             <h2>
               <TextAnimate as="span" by="word" once={true}>{t("caseStudy.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("caseStudy.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.5} className="light">{t("caseStudy.h2b")}</TextAnimate>
             </h2>
           </div>
           <div className="case-card">
@@ -531,7 +531,7 @@ export default function Home() {
             <h2>
               <TextAnimate as="span" by="word" once={true}>{t("matrix.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("matrix.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.5} className="light">{t("matrix.h2b")}</TextAnimate>
             </h2>
             <p className="section-lead">{t("matrix.lead")}</p>
           </div>
@@ -605,7 +605,7 @@ export default function Home() {
             <h2>
               <TextAnimate as="span" by="word" once={true}>{t("process.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("process.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.5} className="light">{t("process.h2b")}</TextAnimate>
             </h2>
           </div>
           <div className="steps">
