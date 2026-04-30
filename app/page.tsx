@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { STRINGS, Lang } from "./strings";
 import { LightRays } from "./LightRays";
-import { DiaTextReveal } from "./DiaTextReveal";
+import { AuroraText } from "./AuroraText";
 import { AgentOrb } from "./AgentOrb";
 import { TextAnimate } from "./TextAnimate";
 import { HeroAnimate } from "./HeroAnimate";
@@ -665,13 +665,7 @@ export default function Home() {
         <div className="container inner" style={{ flexDirection: "column", alignItems: "center", gap: "32px", textAlign: "center" }}>
           <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px,4vw,52px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fafafa", lineHeight: 1.1, maxWidth: "700px" }}>
             <span>{t("spotlight.left")}</span>{" "}
-            <DiaTextReveal
-              text={t("spotlight.right")}
-              colors={["#c39a52", "#e8d5a6", "#ffffff", "#a8d4f5", "#6fa8d4"]}
-              textColor="#6fa8d4"
-              duration={1.8}
-              delay={0.3}
-            />
+            <AuroraText>{t("spotlight.right")}</AuroraText>
           </p>
           <a className="btn btn-primary btn-lg" href="https://calendar.app.google/ok4xj5QtxsRTCCoZ8" target="_blank" rel="noopener noreferrer" style={{ width: "auto" }}>{t("nav.cta")}</a>
         </div>
