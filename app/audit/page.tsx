@@ -55,6 +55,10 @@ export default function AuditPage() {
   const [q15Text, setQ15Text] = useState("");
   const [results, setResults] = useState<ResultData | null>(null);
   const [animating, setAnimating] = useState(false);
+  const [gateEmail, setGateEmail] = useState("");
+  const [gateName, setGateName] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailSending, setEmailSending] = useState(false);
 
   const S = STRINGS[lang] as Record<string, unknown>;
   const t = useCallback((key: string): string => getDeep(S, key) ?? key, [S]);
@@ -86,8 +90,8 @@ export default function AuditPage() {
   };
 
   const startQuiz = () => {
-    const emailEl = document.getElementById("gate-email") as HTMLInputElement;
-    if (!emailEl?.value?.includes("@")) {
+    if (!gateEmail.includes("@")) {
+      const emailEl = document.getElementById("gate-email") as HTMLInputElement;
       if (emailEl) emailEl.style.borderColor = "#d4443a";
       return;
     }
@@ -95,6 +99,27 @@ export default function AuditPage() {
     setCurrentQ(1);
     setSelectedOpt(null);
     setPhase("quiz");
+  };
+
+  const sendResultsEmail = async (data: ResultData) => {
+    setEmailSending(true);
+    try {
+      await fetch("/api/send-results", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: gateEmail,
+          name: gateName,
+          lang,
+          ...data,
+        }),
+      });
+      setEmailSent(true);
+    } catch {
+      // silent fail — results still shown
+    } finally {
+      setEmailSending(false);
+    }
   };
 
   const handleOptClick = (qNum: number, score: number, optIdx: number) => {
@@ -164,8 +189,10 @@ export default function AuditPage() {
       ctaSub    = ispl ? "Ta rozmowa to architektura, nie sprzedaż. Wychodzimy z planem." : "This call is architecture, not sales. We leave with a plan.";
     }
 
-    setResults({ score: displayScore, tier, tierColor, desc, insights, ctaLabel, ctaSub });
+    const resultData = { score: displayScore, tier, tierColor, desc, insights, ctaLabel, ctaSub };
+    setResults(resultData);
     setPhase("results");
+    sendResultsEmail(resultData);
   };
 
   const progress = Math.round(((currentQ - 1) / TOTAL_Q) * 100);
@@ -245,12 +272,16 @@ export default function AuditPage() {
                   <input
                     type="text"
                     placeholder={t("gate.name")}
+                    value={gateName}
+                    onChange={e => setGateName(e.target.value)}
                     style={inputStyle}
                   />
                   <input
                     id="gate-email"
                     type="email"
                     placeholder={t("gate.email")}
+                    value={gateEmail}
+                    onChange={e => setGateEmail(e.target.value)}
                     style={inputStyle}
                     onFocus={e => (e.target.style.borderColor = "var(--accent)")}
                     onBlur={e => (e.target.style.borderColor = "var(--border-soft)")}
@@ -499,6 +530,26 @@ export default function AuditPage() {
                 <p style={{ fontSize: "15px", lineHeight: 1.6, color: "var(--fg-2)", maxWidth: "480px", margin: "0 auto" }}>
                   {results.desc}
                 </p>
+              </div>
+
+              {/* Email status */}
+              <div style={{
+                display: "flex", alignItems: "center", gap: "8px",
+                padding: "10px 16px",
+                background: emailSent ? "rgba(63,157,91,0.08)" : "var(--bg-surface)",
+                border: `1px solid ${emailSent ? "rgba(63,157,91,0.25)" : "var(--border-subtle)"}`,
+                borderRadius: "var(--r-md)",
+                marginBottom: "16px",
+                fontSize: "13px",
+                color: emailSent ? "#3f9d5b" : "var(--fg-4)",
+              }}>
+                {emailSending ? (
+                  <><span>⏳</span><span>{lang === "pl" ? "Wysyłam raport na " : "Sending report to "}{gateEmail}…</span></>
+                ) : emailSent ? (
+                  <><span>✓</span><span>{lang === "pl" ? `Raport PDF wysłany na ${gateEmail}` : `PDF report sent to ${gateEmail}`}</span></>
+                ) : (
+                  <><span>📧</span><span>{lang === "pl" ? `Raport zostanie wysłany na ${gateEmail}` : `Report will be sent to ${gateEmail}`}</span></>
+                )}
               </div>
 
               {/* Insights */}
