@@ -57,6 +57,25 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email send failed" }, { status: 500 });
     }
 
+    // Upsert contact in Brevo CRM
+    await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: {
+        "api-key": BREVO_API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        updateEnabled: true,
+        attributes: {
+          FIRSTNAME: name || "",
+          AI_SCORE: score,
+          AI_TIER: tier,
+          AI_LANG: lang,
+        },
+      }),
+    });
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("send-results error:", err);
