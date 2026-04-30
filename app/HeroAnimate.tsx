@@ -1,10 +1,11 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { motion, type Variants } from "motion/react"
 
 interface Segment {
   t: string
-  c?: boolean // colored (accent)
+  c?: boolean
 }
 
 interface HeroAnimateProps {
@@ -12,16 +13,6 @@ interface HeroAnimateProps {
   className?: string
   delay?: number
   accentColor?: string
-}
-
-const containerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      delayChildren: 0,
-      staggerChildren: 0.06,
-    },
-  },
 }
 
 const wordVariants: Variants = {
@@ -40,7 +31,13 @@ export function HeroAnimate({
   delay = 0,
   accentColor = "#6fa8d4",
 }: HeroAnimateProps) {
-  // Split all segments into individual words, preserving color info
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    setReady(true)
+  }, [])
+
+  // Flatten all segments into per-word list
   const words: { word: string; colored: boolean }[] = []
   for (const seg of segments) {
     const parts = seg.t.split(/(\s+)/)
@@ -49,7 +46,7 @@ export function HeroAnimate({
     }
   }
 
-  const containerWithDelay: Variants = {
+  const containerVariants: Variants = {
     hidden: {},
     show: {
       transition: {
@@ -62,9 +59,9 @@ export function HeroAnimate({
   return (
     <motion.span
       className={className}
-      variants={containerWithDelay}
+      variants={containerVariants}
       initial="hidden"
-      animate="show"
+      animate={ready ? "show" : "hidden"}
     >
       {words.map((w, i) => (
         <motion.span

@@ -1,6 +1,6 @@
 "use client"
 
-import { memo } from "react"
+import { memo, useEffect, useState } from "react"
 import { motion, type Variants } from "motion/react"
 
 interface TextAnimateProps {
@@ -35,6 +35,11 @@ const TextAnimateBase = ({
   trigger = "viewport",
 }: TextAnimateProps) => {
   const MotionTag = motion[Tag] as typeof motion.span
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    setReady(true)
+  }, [])
 
   const segments =
     by === "word" ? children.split(/(\s+)/) : children.split("")
@@ -51,7 +56,7 @@ const TextAnimateBase = ({
 
   const motionProps =
     trigger === "mount"
-      ? { initial: "hidden", animate: "show" }
+      ? { initial: "hidden", animate: ready ? "show" : "hidden" }
       : { initial: "hidden", whileInView: "show", viewport: { once } }
 
   return (
