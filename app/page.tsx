@@ -317,15 +317,15 @@ export default function Home() {
           <h1>
             {heroVariant ? (
               <>
-                <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0}>{heroVariant.h1a.replace(/<[^>]+>/g, "")}</TextAnimate>
+                <TextAnimate as="span" by="word" once={true} delay={0}>{heroVariant.h1a.replace(/<[^>]+>/g, "")}</TextAnimate>
                 <br />
-                <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.2} className="h1-light">{heroVariant.h1b.replace(/<[^>]+>/g, "")}</TextAnimate>
+                <TextAnimate as="span" by="word" once={true} delay={0.2} className="h1-light">{heroVariant.h1b.replace(/<[^>]+>/g, "")}</TextAnimate>
               </>
             ) : (
               <>
-                <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0}>{t("hero.h1a")}</TextAnimate>
+                <TextAnimate as="span" by="word" once={true} delay={0}>{t("hero.h1a")}</TextAnimate>
                 <br />
-                <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.2} className="h1-light">{t("hero.h1b")}</TextAnimate>
+                <TextAnimate as="span" by="word" once={true} delay={0.2} className="h1-light">{t("hero.h1b")}</TextAnimate>
               </>
             )}
           </h1>
@@ -348,9 +348,9 @@ export default function Home() {
           <div className="section-head">
             <span className="section-eyebrow">{t("method.eyebrow")}</span>
             <h2>
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("method.h2a")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true}>{t("method.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("method.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("method.h2b")}</TextAnimate>
             </h2>
             <p className="section-lead">{t("method.lead")}</p>
           </div>
@@ -404,9 +404,9 @@ export default function Home() {
           <div className="section-head">
             <span className="section-eyebrow">{t("infra.eyebrow")}</span>
             <h2>
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("infra.h2a")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true}>{t("infra.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("infra.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("infra.h2b")}</TextAnimate>
             </h2>
             <p className="section-lead">{t("infra.lead")}</p>
           </div>
@@ -440,9 +440,9 @@ export default function Home() {
           <div className="section-head">
             <span className="section-eyebrow">{t("caseStudy.eyebrow")}</span>
             <h2>
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("caseStudy.h2a")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true}>{t("caseStudy.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("caseStudy.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("caseStudy.h2b")}</TextAnimate>
             </h2>
           </div>
           <div className="case-card">
@@ -528,9 +528,9 @@ export default function Home() {
           <div className="section-head">
             <span className="section-eyebrow">{t("matrix.eyebrow")}</span>
             <h2>
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("matrix.h2a")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true}>{t("matrix.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("matrix.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("matrix.h2b")}</TextAnimate>
             </h2>
             <p className="section-lead">{t("matrix.lead")}</p>
           </div>
@@ -602,9 +602,9 @@ export default function Home() {
           <div className="section-head">
             <span className="section-eyebrow">{t("process.eyebrow")}</span>
             <h2>
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true}>{t("process.h2a")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true}>{t("process.h2a")}</TextAnimate>
               {" "}
-              <TextAnimate as="span" animation="blurInUp" by="word" once={true} delay={0.15} className="light">{t("process.h2b")}</TextAnimate>
+              <TextAnimate as="span" by="word" once={true} delay={0.15} className="light">{t("process.h2b")}</TextAnimate>
             </h2>
           </div>
           <div className="steps">
