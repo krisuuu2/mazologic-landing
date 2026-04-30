@@ -317,13 +317,13 @@ export default function Home() {
           <h1>
             {heroVariant ? (
               <>
-                <TextAnimate as="span" by="word" once={true} delay={0}>{heroVariant.h1a.replace(/<[^>]+>/g, "")}</TextAnimate>
+                <span dangerouslySetInnerHTML={{ __html: heroVariant.h1a }} />
                 <br />
-                <TextAnimate as="span" by="word" once={true} delay={0.2} className="h1-light">{heroVariant.h1b.replace(/<[^>]+>/g, "")}</TextAnimate>
+                <TextAnimate as="span" by="word" once={true} delay={0.2} className="h1-light">{heroVariant.h1b}</TextAnimate>
               </>
             ) : (
               <>
-                <TextAnimate as="span" by="word" once={true} delay={0}>{t("hero.h1a")}</TextAnimate>
+                <span>{t("hero.h1a")}</span>
                 <br />
                 <TextAnimate as="span" by="word" once={true} delay={0.2} className="h1-light">{t("hero.h1b")}</TextAnimate>
               </>
