@@ -17,8 +17,9 @@ export async function POST(req: NextRequest) {
     }
 
     // Generate PDF
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const pdfBuffer = await renderToBuffer(
-      createElement(ResultsPDF, { lang, score, tier, tierColor, desc, insights, ctaLabel, ctaSub })
+      createElement(ResultsPDF, { lang, score, tier, tierColor, desc, insights, ctaLabel, ctaSub }) as any
     );
 
     const pdfBase64 = Buffer.from(pdfBuffer).toString("base64");
