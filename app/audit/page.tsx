@@ -57,6 +57,8 @@ export default function AuditPage() {
   const [animating, setAnimating] = useState(false);
   const [gateEmail, setGateEmail] = useState("");
   const [gateName, setGateName] = useState("");
+  const [gateConsent, setGateConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [emailSending, setEmailSending] = useState(false);
 
@@ -95,6 +97,11 @@ export default function AuditPage() {
       if (emailEl) emailEl.style.borderColor = "#d4443a";
       return;
     }
+    if (!gateConsent) {
+      setConsentError(true);
+      return;
+    }
+    setConsentError(false);
     setScores(Array(TOTAL_Q).fill(null));
     setCurrentQ(1);
     setSelectedOpt(null);
@@ -288,6 +295,28 @@ export default function AuditPage() {
                   />
                 </div>
 
+                {/* Consent checkbox */}
+                <label style={{
+                  display: "flex", alignItems: "flex-start", gap: "10px",
+                  marginBottom: "20px", cursor: "pointer",
+                }}>
+                  <input
+                    type="checkbox"
+                    checked={gateConsent}
+                    onChange={e => { setGateConsent(e.target.checked); setConsentError(false); }}
+                    style={{
+                      marginTop: "2px", flexShrink: 0, width: "16px", height: "16px",
+                      accentColor: "var(--accent)", cursor: "pointer",
+                    }}
+                  />
+                  <span style={{ fontSize: "13px", color: consentError ? "#d4443a" : "var(--fg-3)", lineHeight: 1.5 }}>
+                    {lang === "pl"
+                      ? <>Zgadzam się na otrzymanie raportu AI na podany adres email i przetwarzanie moich danych przez MazoLogic zgodnie z <a href="/privacy" target="_blank" style={{ color: "var(--accent)", textDecoration: "underline" }}>Polityką Prywatności</a>.</>
+                      : <>I agree to receive my AI Readiness Report by email and to the processing of my data by MazoLogic in accordance with the <a href="/privacy" target="_blank" style={{ color: "var(--accent)", textDecoration: "underline" }}>Privacy Policy</a>.</>
+                    }
+                  </span>
+                </label>
+
                 <button
                   className="btn btn-primary btn-lg"
                   style={{ width: "100%", justifyContent: "center" }}
@@ -295,10 +324,6 @@ export default function AuditPage() {
                 >
                   {lang === "pl" ? "Rozpocznij Diagnostykę →" : "Start Diagnostic →"}
                 </button>
-
-                <p style={{ fontSize: "12px", color: "var(--fg-4)", marginTop: "14px", textAlign: "center" }}>
-                  {t("gate.privacy")}
-                </p>
               </div>
 
               {/* What to expect */}
