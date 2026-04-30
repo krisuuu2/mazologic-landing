@@ -6,7 +6,7 @@ import { LightRays } from "./LightRays";
 import { DiaTextReveal } from "./DiaTextReveal";
 import { AgentOrb } from "./AgentOrb";
 import { TextAnimate } from "./TextAnimate";
-import { motion } from "motion/react";
+import { HeroAnimate } from "./HeroAnimate";
 
 // ── Quiz question definitions ──────────────────────────────────────────
 const QUIZ_QUESTIONS = [
@@ -318,24 +318,15 @@ export default function Home() {
           <h1>
             {heroVariant ? (
               <>
-                <motion.span
-                  dangerouslySetInnerHTML={{ __html: heroVariant.h1a }}
-                  initial={{ opacity: 0, filter: "blur(8px)", y: 12 }}
-                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                />
+                <HeroAnimate segments={heroVariant.h1a} delay={0} />
                 <br />
-                <TextAnimate as="span" by="word" once={true} delay={0.25} className="h1-light">{heroVariant.h1b}</TextAnimate>
+                <TextAnimate as="span" by="word" once={true} delay={0.4} className="h1-light">{heroVariant.h1b}</TextAnimate>
               </>
             ) : (
               <>
-                <motion.span
-                  initial={{ opacity: 0, filter: "blur(8px)", y: 12 }}
-                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                >{t("hero.h1a")}</motion.span>
+                <HeroAnimate segments={[{ t: t("hero.h1a") }]} delay={0} />
                 <br />
-                <TextAnimate as="span" by="word" once={true} delay={0.25} className="h1-light">{t("hero.h1b")}</TextAnimate>
+                <TextAnimate as="span" by="word" once={true} delay={0.4} className="h1-light">{t("hero.h1b")}</TextAnimate>
               </>
             )}
           </h1>
