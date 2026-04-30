@@ -311,8 +311,8 @@ export default function AuditPage() {
                   />
                   <span style={{ fontSize: "13px", color: consentError ? "#d4443a" : "var(--fg-3)", lineHeight: 1.5 }}>
                     {lang === "pl"
-                      ? <>Zgadzam się na otrzymanie raportu AI na podany adres email i przetwarzanie moich danych przez MazoLogic zgodnie z <a href="/privacy" target="_blank" style={{ color: "var(--accent)", textDecoration: "underline" }}>Polityką Prywatności</a>.</>
-                      : <>I agree to receive my AI Readiness Report by email and to the processing of my data by MazoLogic in accordance with the <a href="/privacy" target="_blank" style={{ color: "var(--accent)", textDecoration: "underline" }}>Privacy Policy</a>.</>
+                      ? <>Zgadzam się na przetwarzanie moich danych osobowych (email i imię) przez MazoLogic w celu wysłania raportu AI Readiness i przechowywania w CRM. Zapoznałem/am się z <a href="/privacy" target="_blank" style={{ color: "var(--accent)", textDecoration: "underline" }}>Polityką Prywatności</a>. Zgodę mogę wycofać w dowolnym momencie pisząc na info@mazologic.com.</>
+                      : <>I consent to the processing of my personal data (email and name) by MazoLogic for the purpose of delivering my AI Readiness Report and storing my contact in the CRM. I have read the <a href="/privacy" target="_blank" style={{ color: "var(--accent)", textDecoration: "underline" }}>Privacy Policy</a>. I may withdraw consent at any time by emailing info@mazologic.com.</>
                     }
                   </span>
                 </label>
