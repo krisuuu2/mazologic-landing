@@ -8,6 +8,13 @@ const BASE_URL = "https://mazologic.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   title: {
     default: "MazoLogic — AI Operating System for SMBs",
     template: "%s | MazoLogic",
