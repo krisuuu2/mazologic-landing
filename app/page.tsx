@@ -679,9 +679,9 @@ export default function Home() {
         <div className="container footer-inner">
           <span className="wm"><b>MAZO</b><span>LOGIC</span></span>
           <div className="footer-links">
-            <a href="#">{t("footer.privacy")}</a>
-            <a href="#">{t("footer.terms")}</a>
-            <a href="#">{t("footer.contact")}</a>
+            <a href="/privacy">{t("footer.privacy")}</a>
+            <a href="/audit">{lang === "pl" ? "Audyt AI" : "AI Audit"}</a>
+            <a href="mailto:info@mazologic.com">{t("footer.contact")}</a>
           </div>
           <span className="footer-copy">© 2026 MazoLogic</span>
         </div>
