@@ -418,12 +418,14 @@
   .prob-card.wide { grid-column: auto; flex-direction: column; gap: 24px; }
   .divider-v      { width: 80px; height: 1px; }
   .steps          { grid-template-columns: 1fr 1fr; }
-  .comp-head, .comp-row { grid-template-columns: 100px 1fr 1fr; }
+  .comp-head, .comp-row { grid-template-columns: minmax(90px, 110px) 1fr 1fr; }
 }
 @media (max-width: 640px) {
   .steps    { grid-template-columns: 1fr; }
-  .comp-head, .comp-row { grid-template-columns: 1fr; gap: 6px; }
-  .comp-label { display: none; }
+  .comp-head, .comp-row { grid-template-columns: minmax(70px, 90px) 1fr 1fr; gap: 8px; padding: 12px 12px; }
+  .comp-head { font-size: 9px; }
+  .comp-row  { font-size: 12px; }
+  .comp-label { display: block; font-size: 11px; }
 
   /* Matrix — mobile fixes */
   .matrix-wrap { padding: 16px; }
