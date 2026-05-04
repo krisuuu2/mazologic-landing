@@ -104,7 +104,7 @@ function buildHtmlEN({ name, score, tier, tierColor, desc, insights, ctaLabel, c
 <body style="margin:0;padding:0;background:#09090b;font-family:Inter,Arial,sans-serif;color:#fafafa;">
   <div style="max-width:600px;margin:0 auto;padding:40px 24px;">
     <div style="margin-bottom:32px;">
-      <span style="font-family:Georgia,serif;font-size:22px;font-weight:900;letter-spacing:-0.03em;color:#fafafa;"><b>MAZO</b><span style="font-weight:300">LOGIC</span></span>
+      <span style="font-family:Arial,Helvetica,sans-serif;font-size:20px;letter-spacing:-0.04em;color:#fafafa;"><span style="font-weight:900">MAZO</span><span style="font-weight:300;color:#8a8a94">LOGIC</span></span>
     </div>
     <h1 style="font-size:28px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin:0 0 8px;color:#fafafa;">
       Your AI Readiness Report
@@ -154,7 +154,7 @@ function buildHtmlPL({ name, score, tier, tierColor, desc, insights, ctaLabel, c
 <body style="margin:0;padding:0;background:#09090b;font-family:Inter,Arial,sans-serif;color:#fafafa;">
   <div style="max-width:600px;margin:0 auto;padding:40px 24px;">
     <div style="margin-bottom:32px;">
-      <span style="font-family:Georgia,serif;font-size:22px;font-weight:900;letter-spacing:-0.03em;color:#fafafa;"><b>MAZO</b><span style="font-weight:300">LOGIC</span></span>
+      <span style="font-family:Arial,Helvetica,sans-serif;font-size:20px;letter-spacing:-0.04em;color:#fafafa;"><span style="font-weight:900">MAZO</span><span style="font-weight:300;color:#8a8a94">LOGIC</span></span>
     </div>
     <h1 style="font-size:28px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin:0 0 8px;color:#fafafa;">
       Twój Raport Gotowości AI

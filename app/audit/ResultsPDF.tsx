@@ -40,8 +40,8 @@ const s = StyleSheet.create({
   scoreCard: { backgroundColor: "#1c1c21", borderRadius: 12, padding: "24 28", marginBottom: 16, alignItems: "center" },
   scoreNumber: { fontSize: 56, fontFamily: "Helvetica-Bold", lineHeight: 1 },
   scoreOf: { fontSize: 11, color: "#52525b", marginBottom: 10 },
-  tierBadge: { borderRadius: 99, paddingHorizontal: 14, paddingVertical: 5, fontSize: 12, fontFamily: "Helvetica-Bold", marginBottom: 14 },
-  tierBadgeBorder: { borderWidth: 1, borderRadius: 99, padding: "4 14" },
+  tierBadge: { fontSize: 12, fontFamily: "Helvetica-Bold", marginBottom: 14 },
+  tierBadgeBorder: { borderWidth: 1, borderRadius: 99, paddingHorizontal: 14, paddingVertical: 6 },
   desc: { fontSize: 12, color: "#c4c4cb", lineHeight: 1.55, textAlign: "center", maxWidth: 380 },
 
   // Section
@@ -50,7 +50,7 @@ const s = StyleSheet.create({
 
   // Insight row
   insightRow: { flexDirection: "row", gap: 12, marginBottom: 14, alignItems: "flex-start" },
-  insightIcon: { width: 28, height: 28, backgroundColor: "#27272a", borderRadius: 6, alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0 },
+  insightBullet: { width: 4, height: 4, backgroundColor: "#3E6E99", borderRadius: 2, marginTop: 5, flexShrink: 0 },
   insightH: { fontSize: 12, fontFamily: "Helvetica-Bold", color: "#fafafa", marginBottom: 3 },
   insightP: { fontSize: 10.5, color: "#8a8a94", lineHeight: 1.5 },
 
@@ -102,7 +102,7 @@ export function ResultsPDF({ lang, score, tier, tierColor, desc, insights, ctaLa
           <Text style={s.sectionTitle}>{ispl ? "Twoje spersonalizowane spostrzeżenia" : "Your personalised insights"}</Text>
           {insights.map((ins, i) => (
             <View key={i} style={s.insightRow}>
-              <View style={s.insightIcon}><Text>{ins.icon}</Text></View>
+              <View style={s.insightBullet} />
               <View style={{ flex: 1 }}>
                 <Text style={s.insightH}>{ins.h}</Text>
                 <Text style={s.insightP}>{ins.p}</Text>
