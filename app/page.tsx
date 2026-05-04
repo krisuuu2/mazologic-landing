@@ -683,7 +683,7 @@ export default function Home() {
             <a href="/audit">{lang === "pl" ? "Audyt AI" : "AI Audit"}</a>
             <a href="mailto:info@mazologic.com">{t("footer.contact")}</a>
           </div>
-          <span className="footer-copy">© 2026 MazoLogic</span>
+          <span className="footer-copy">© 2026 MazoLogic · Mazo Media Krzysztof Łomonkiewicz · NIP 5842550318</span>
         </div>
       </footer>
     </>

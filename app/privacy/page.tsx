@@ -50,8 +50,8 @@ export default function PrivacyPage() {
 
               <Section title={ispl ? "1. Administrator danych" : "1. Data Controller"}>
                 {ispl
-                  ? "Administratorem Twoich danych osobowych jest MazoLogic (info@mazologic.com). Nie wyznaczyliśmy Inspektora Ochrony Danych (IOD), ponieważ przetwarzanie danych nie wymaga tego na podstawie art. 37 RODO. We wszelkich sprawach dotyczących danych osobowych prosimy o kontakt: info@mazologic.com."
-                  : "The data controller is MazoLogic (info@mazologic.com). We have not appointed a Data Protection Officer (DPO) as our processing does not require one under Art. 37 GDPR. For all data protection matters, contact us at: info@mazologic.com."}
+                  ? "Administratorem Twoich danych osobowych jest Mazo Media Krzysztof Łomonkiewicz, ul. Obrońców Wybrzeża 4A lok. 69, 80-398 Gdańsk, NIP: 5842550318, REGON: 369116389 (działająca pod marką MazoLogic). Nie wyznaczyliśmy Inspektora Ochrony Danych (IOD), ponieważ przetwarzanie danych nie wymaga tego na podstawie art. 37 RODO. We wszelkich sprawach dotyczących danych osobowych prosimy o kontakt: info@mazologic.com."
+                  : "The data controller is Mazo Media Krzysztof Łomonkiewicz, ul. Obrońców Wybrzeża 4A lok. 69, 80-398 Gdańsk, Poland, NIP: 5842550318, REGON: 369116389 (trading as MazoLogic). We have not appointed a Data Protection Officer (DPO) as our processing does not require one under Art. 37 GDPR. For all data protection matters, contact us at: info@mazologic.com."}
               </Section>
 
               <Section title={ispl ? "2. Jakie dane zbieramy" : "2. What data we collect"}>
