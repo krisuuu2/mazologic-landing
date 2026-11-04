@@ -43,7 +43,7 @@ export default function PrivacyPage() {
               {ispl ? "Polityka Prywatności" : "Privacy Policy"}
             </h1>
             <p style={{ fontSize: "14px", color: "var(--fg-4)", marginBottom: "48px", fontFamily: "var(--font-mono)" }}>
-              {ispl ? "Ostatnia aktualizacja: 1 maja 2026" : "Last updated: 1 May 2026"}
+              {ispl ? "Ostatnia aktualizacja: 4 listopada 2026" : "Last updated: 4 November 2026"}
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
@@ -104,8 +104,8 @@ export default function PrivacyPage() {
 
               <Section title={ispl ? "10. Pliki cookie i localStorage" : "10. Cookies and localStorage"}>
                 {ispl
-                  ? "Ta strona nie używa plików cookie do śledzenia, analityki ani reklam. Używamy wyłącznie localStorage przeglądarki do zapamiętania dwóch preferencji: (a) wybranego języka (EN/PL), (b) wybranego motywu kolorystycznego (jasny/ciemny). Te dane pozostają wyłącznie na Twoim urządzeniu, nie są przesyłane na nasze serwery i możesz je usunąć w każdej chwili czyszcząc dane przeglądarki. Na podstawie art. 5 ust. 3 dyrektywy ePrivacy (w Polsce: art. 173 Prawa Telekomunikacyjnego) przechowywanie to jest zwolnione z wymogu zgody, ponieważ jest ściśle niezbędne do świadczenia usługi na Twoje wyraźne żądanie."
-                  : "This website does not use cookies for tracking, analytics, or advertising. We use browser localStorage only to remember two preferences: (a) your chosen language (EN/PL), (b) your chosen colour theme (light/dark). This data stays exclusively on your device, is never sent to our servers, and can be cleared at any time through your browser settings. Under Art. 5(3) of the ePrivacy Directive, this storage is exempt from consent requirements as it is strictly necessary to provide the service you explicitly requested."}
+                  ? "Ta strona nie używa plików cookie do śledzenia, analityki ani reklam. Używamy wyłącznie localStorage przeglądarki do zapamiętania jednej preferencji: wybranego języka (EN/PL). Te dane pozostają wyłącznie na Twoim urządzeniu, nie są przesyłane na nasze serwery i możesz je usunąć w każdej chwili czyszcząc dane przeglądarki. Na podstawie art. 5 ust. 3 dyrektywy ePrivacy (w Polsce: art. 173 Prawa Telekomunikacyjnego) przechowywanie to jest zwolnione z wymogu zgody, ponieważ jest ściśle niezbędne do świadczenia usługi na Twoje wyraźne żądanie."
+                  : "This website does not use cookies for tracking, analytics, or advertising. We use browser localStorage only to remember one preference: your chosen language (EN/PL). This data stays exclusively on your device, is never sent to our servers, and can be cleared at any time through your browser settings. Under Art. 5(3) of the ePrivacy Directive, this storage is exempt from consent requirements as it is strictly necessary to provide the service you explicitly requested."}
               </Section>
 
             </div>

@@ -66,6 +66,7 @@ export function HeroAnimate({
       {words.map((w, i) => (
         <motion.span
           key={i}
+          className="ta-word"
           variants={wordVariants}
           style={{
             display: "inline-block",

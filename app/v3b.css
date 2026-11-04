@@ -768,6 +768,8 @@ a.wordmark, a:has(.wm) { text-decoration: none; }
 .faq-item summary { border-radius: var(--r-xs); transition: color var(--dur-fast) var(--ease-out); }
 .faq-item summary:hover { color: var(--fg-accent); }
 .hero h1, .diff-h2, .bottom-cta-wrap h2 { text-wrap: balance; }
+/* own block so each half of the hero h1 stays under Chrome's 6-line balance limit */
+.hero h1 .h1-light { display: block; }
 .section-lead { text-wrap: pretty; }
 /* "Twój proces" card: dashed border marks it as the open-ended option */
 .sol-card:has(.sol-tag-link) { border-style: dashed; border-color: var(--border-accent); }
@@ -780,4 +782,19 @@ a.wordmark, a:has(.wm) { text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   .sol-card:hover { transform: none; }
+  /* word-by-word reveal (motion sets inline styles) */
+  .ta-word { opacity: 1 !important; transform: none !important; filter: none !important; }
 }
+
+/* 3n+2 cards: centre the short last row instead of leaving a hole */
+@media (min-width: 901px) {
+  .solution-grid { grid-template-columns: repeat(6, 1fr); }
+  .solution-grid > .sol-card { grid-column: span 2; }
+  .solution-grid > .sol-card:nth-child(3n+1):nth-last-child(2) { grid-column: 2 / span 2; }
+}
+
+/* Security: open columns instead of a fourth card grid in a row */
+#security .problem-grid { grid-template-columns: repeat(4, 1fr); gap: var(--s-8); }
+#security .prob-card { background: none; border: 0; border-top: 1px solid var(--border-accent); border-radius: 0; box-shadow: none; padding: var(--s-6) 0 0; }
+@media (max-width: 900px) { #security .problem-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { #security .problem-grid { grid-template-columns: 1fr; gap: var(--s-6); } }

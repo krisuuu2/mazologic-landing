@@ -68,6 +68,7 @@ const TextAnimateBase = ({
       {segments.map((seg, i) => (
         <motion.span
           key={i}
+          className="ta-word"
           variants={wordVariants}
           style={{ display: "inline-block", whiteSpace: "pre" }}
         >

@@ -19,16 +19,8 @@ function getHeroVariantIndex(total: number): number {
   return idx;
 }
 
-const ThemeIcon = ({ kind }: { kind: "dark" | "light" }) =>
-  kind === "dark" ? (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  ) : (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
-  );
-
 export default function Home() {
   const [lang, setLang] = useState<Lang>("en");
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [heroVariantIdx, setHeroVariantIdx] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -38,21 +30,11 @@ export default function Home() {
   useEffect(() => {
     const savedLang = localStorage.getItem("mazo-lang") as Lang | null;
     const browserLang: Lang = navigator.language?.toLowerCase().startsWith("pl") ? "pl" : "en";
-    const savedTheme = localStorage.getItem("mazo-theme") as "dark" | "light" | null;
-    const systemTheme: "dark" | "light" = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-    const initTheme = savedTheme ?? systemTheme;
     setLang(savedLang ?? browserLang);
-    setTheme(initTheme);
-    document.documentElement.setAttribute("data-theme", initTheme);
     setHeroVariantIdx(getHeroVariantIndex(OFFER.en.hero.variants.length));
   }, []);
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
-
   const switchLang = (l: Lang) => { setLang(l); localStorage.setItem("mazo-lang", l); };
-  const switchTheme = (t: "dark" | "light") => { setTheme(t); localStorage.setItem("mazo-theme", t); };
 
   const hero = o.hero.variants[(heroVariantIdx ?? 0) % o.hero.variants.length];
 
@@ -61,10 +43,6 @@ export default function Home() {
       <div className="toggle-group lang" role="tablist" aria-label="Language">
         <button className={lang === "en" ? "active" : ""} onClick={() => switchLang("en")}>EN</button>
         <button className={lang === "pl" ? "active" : ""} onClick={() => switchLang("pl")}>PL</button>
-      </div>
-      <div className="toggle-group" role="tablist" aria-label="Theme">
-        <button className={theme === "dark" ? "active" : ""} onClick={() => switchTheme("dark")}><ThemeIcon kind="dark" />Dark</button>
-        <button className={theme === "light" ? "active" : ""} onClick={() => switchTheme("light")}><ThemeIcon kind="light" />Light</button>
       </div>
     </>
   );
@@ -99,7 +77,7 @@ export default function Home() {
           <div className="nav-right">
             {toggles}
             <a className="btn btn-primary btn-sm nav-cta-desktop" href={CAL} target="_blank" rel="noopener noreferrer">{o.nav.cta}</a>
-            <button className="hamburger" aria-label="Toggle menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}>
+            <button className="hamburger" aria-label="Menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}>
               <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>
               <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>
               <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>

@@ -36,10 +36,10 @@ export const metadata: Metadata = {
       "One-day implementations and team training. Solutions that work on your files and inside your tools, with a human in charge of the decisions that matter.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-home.png",
         width: 1200,
         height: 630,
-        alt: "MazoLogic — AI Operating System",
+        alt: "MazoLogic — One day. One process. A working solution.",
       },
     ],
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "MazoLogic — Business process automation, one process at a time",
     description:
       "One-day implementations and team training. Solutions that work on your files and inside your tools.",
-    images: ["/og-image.png"],
+    images: ["/og-home.png"],
   },
   robots: {
     index: true,
@@ -63,6 +63,9 @@ export const metadata: Metadata = {
     },
   },
 };
+
+// Follows the system light/dark setting before first paint and when it changes.
+const themeScript = `(()=>{const m=matchMedia("(prefers-color-scheme: light)");const s=()=>{document.documentElement.dataset.theme=m.matches?"light":"dark"};s();m.addEventListener("change",s)})()`;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -82,8 +85,9 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
