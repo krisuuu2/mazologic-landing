@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   title: {
-    default: "MazoLogic — AI Operating System for SMBs",
+    default: "MazoLogic — Business process automation, one process at a time",
     template: "%s | MazoLogic",
   },
   description:
-    "Stop managing tools. Start running your business. MazoLogic builds AI Operating Systems for small and medium businesses — automating operations, data, and customer workflows.",
+    "One-day implementations and team training. We build solutions that work on your files and inside your tools, run the agreed steps on their own, and stop where a human decides.",
   keywords: [
-    "AI Operating System", "AI automation", "SMB automation",
+    "process automation", "Claude Code training", "AI implementation", "AI Operating System", "AI automation", "SMB automation",
     "business AI", "AI consultant", "workflow automation", "MazoLogic",
   ],
   authors: [{ name: "MazoLogic", url: BASE_URL }],
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     type: "website",
     url: BASE_URL,
     siteName: "MazoLogic",
-    title: "MazoLogic — AI Operating System for SMBs",
+    title: "MazoLogic — Business process automation, one process at a time",
     description:
-      "Stop managing tools. Start running your business. MazoLogic builds AI Operating Systems for small and medium businesses.",
+      "One-day implementations and team training. Solutions that work on your files and inside your tools, with a human in charge of the decisions that matter.",
     images: [
       {
         url: "/og-image.png",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MazoLogic — AI Operating System for SMBs",
+    title: "MazoLogic — Business process automation, one process at a time",
     description:
-      "Stop managing tools. Start running your business. MazoLogic builds AI Operating Systems for SMBs.",
+      "One-day implementations and team training. Solutions that work on your files and inside your tools.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -71,7 +71,7 @@ const jsonLd = {
   url: BASE_URL,
   logo: `${BASE_URL}/logo.png`,
   description:
-    "MazoLogic builds AI Operating Systems for small and medium businesses — automating operations, data, and customer workflows.",
+    "MazoLogic automates business processes one at a time: one-day implementations, team training and, as a later stage, an AI Operating System built on what already runs.",
   contactPoint: {
     "@type": "ContactPoint",
     email: "info@mazologic.com",
