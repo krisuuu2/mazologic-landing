@@ -74,7 +74,7 @@ const jsonLd = {
   url: BASE_URL,
   logo: `${BASE_URL}/logo.png`,
   description:
-    "MazoLogic automates business processes one at a time: one-day implementations, team training and, as a later stage, an AI Operating System built on what already runs.",
+    "MazoLogic automates business processes one at a time: one-day implementations, team training and a company second brain: one AI agent with the context of the whole team.",
   contactPoint: {
     "@type": "ContactPoint",
     email: "info@mazologic.com",

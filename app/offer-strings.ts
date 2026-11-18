@@ -8,7 +8,7 @@ type Step = { num: string; h: string; p: string };
 type Faq = { q: string; a: string };
 
 export type OfferStrings = {
-  nav: { services: string; running: string; training: string; how: string; cta: string };
+  nav: { services: string; running: string; training: string; how: string; brain: string; cta: string };
   hero: { variants: HeroVariant[]; cta: string; cta2: string };
   services: { eyebrow: string; h2a: string; h2b: string; lead: string; price: string; priceNote: string; cards: Card[]; yourTag: string };
   running: { eyebrow: string; h2a: string; h2b: string; lead: string; cards: { where: string; h: string; p: string }[] };
@@ -23,7 +23,7 @@ export type OfferStrings = {
 };
 
 const en: OfferStrings = {
-  nav: { services: "Implementations", running: "In production", training: "Training", how: "How we start", cta: "Book a free call →" },
+  nav: { services: "Implementations", running: "In production", training: "Training", how: "How we start", brain: "Second brain", cta: "Book a free call →" },
   hero: {
     variants: [
       { h1a: [{ t: "We automate business processes. " }, { t: "One at a time.", c: true }], h1b: "Implementation takes one day.", sub: "We start with the one task that eats most of your team's time. We build a solution that works on your files and inside your tools, runs the agreed steps on its own, and stops where a human has to decide." },
@@ -105,10 +105,10 @@ const en: OfferStrings = {
     ],
   },
   aios: {
-    left: "Several processes already running?",
-    right: "Connect them into one system.",
-    lead: "After two or three implementations, companies usually want one place to see and steer everything: a shared database, one interface, one memory of clients and history. We build that as a separate stage, on top of what already runs.",
-    cta: "See the AI Operating System →",
+    left: "One AI agent with the whole team's context.",
+    right: "The company's second brain.",
+    lead: "It knows your clients, projects, arrangements and procedures. Anyone on the team can ask it, hand it a task, or tell it to remember something. A separate offer, built on the tools you already use.",
+    cta: "See the second brain →",
   },
   faq: {
     eyebrow: "Questions",
@@ -123,11 +123,11 @@ const en: OfferStrings = {
     ],
   },
   close: { h2: "Let's find the process worth handing over first.", cta: "Book a free call →", cta2: "Ask about training" },
-  footer: { privacy: "Privacy", contact: "Contact", aios: "AI Operating System", audit: "AI Audit" },
+  footer: { privacy: "Privacy", contact: "Contact", aios: "Second brain", audit: "AI Audit" },
 };
 
 const pl: OfferStrings = {
-  nav: { services: "Wdrożenia", running: "Co już pracuje", training: "Szkolenia", how: "Jak zaczynamy", cta: "Umów bezpłatną rozmowę →" },
+  nav: { services: "Wdrożenia", running: "Co już pracuje", training: "Szkolenia", how: "Jak zaczynamy", brain: "Drugi mózg firmy", cta: "Umów bezpłatną rozmowę →" },
   hero: {
     variants: [
       { h1a: [{ t: "Automatyzujemy procesy w firmach. " }, { t: "Jeden na raz.", c: true }], h1b: "Wdrożenie trwa jeden dzień.", sub: "Zaczynamy od jednego zadania, które zabiera Waszemu zespołowi najwięcej czasu. Budujemy rozwiązanie, które pracuje na Waszych plikach i w Waszych narzędziach, samo wykonuje uzgodnione kroki i zatrzymuje się tam, gdzie decyzja należy do człowieka." },
@@ -209,10 +209,10 @@ const pl: OfferStrings = {
     ],
   },
   aios: {
-    left: "Kilka procesów już pracuje?",
-    right: "Spinamy je w jeden system.",
-    lead: "Po dwóch, trzech wdrożeniach firmy zwykle chcą jednego miejsca, z którego widać i steruje się wszystkim: wspólna baza danych, jeden interfejs, jedna pamięć o klientach i historii. Budujemy to jako osobny etap, na tym, co już u Was pracuje.",
-    cta: "Zobacz AI Operating System →",
+    left: "Jeden agent AI z kontekstem całego zespołu.",
+    right: "Drugi mózg firmy.",
+    lead: "Zna klientów, projekty, ustalenia i procedury. Każdy w zespole może go zapytać, zlecić mu zadanie albo kazać coś zapamiętać. To osobna oferta, budowana na narzędziach, których już używacie.",
+    cta: "Zobacz drugi mózg firmy →",
   },
   faq: {
     eyebrow: "Pytania",
@@ -227,7 +227,7 @@ const pl: OfferStrings = {
     ],
   },
   close: { h2: "Sprawdźmy, który proces warto oddać jako pierwszy.", cta: "Umów bezpłatną rozmowę →", cta2: "Zapytaj o szkolenie" },
-  footer: { privacy: "Prywatność", contact: "Kontakt", aios: "AI Operating System", audit: "Audyt AI" },
+  footer: { privacy: "Prywatność", contact: "Kontakt", aios: "Drugi mózg firmy", audit: "Audyt AI" },
 };
 
 export const OFFER = { en, pl } as const;

@@ -223,8 +223,9 @@ export default function Home() {
             </a>
             <div className="nav-links">
               <a className="nav-link" href="#method">{t("nav.method")}</a>
+              <a className="nav-link" href="#asks">{t("nav.asks")}</a>
               <a className="nav-link" href="#process">{t("nav.process")}</a>
-              <a className="nav-link" href="#infra">{t("nav.infra")}</a>
+              <a className="nav-link" href="/">{t("nav.offer")}</a>
             </div>
           </div>
           <div className="nav-right">
@@ -251,8 +252,9 @@ export default function Home() {
         {menuOpen && (
           <div className="mobile-menu">
             <a className="mobile-nav-link" href="#method" onClick={() => setMenuOpen(false)}>{t("nav.method")}</a>
+            <a className="mobile-nav-link" href="#asks" onClick={() => setMenuOpen(false)}>{t("nav.asks")}</a>
             <a className="mobile-nav-link" href="#process" onClick={() => setMenuOpen(false)}>{t("nav.process")}</a>
-            <a className="mobile-nav-link" href="#infra" onClick={() => setMenuOpen(false)}>{t("nav.infra")}</a>
+            <a className="mobile-nav-link" href="/" onClick={() => setMenuOpen(false)}>{t("nav.offer")}</a>
             <div className="mobile-menu-footer">
               <div className="mobile-menu-toggles">
                 <div className="toggle-group lang" role="tablist" aria-label="Language">
@@ -332,6 +334,29 @@ export default function Home() {
                 <h3>{t(card.h)}</h3>
                 <p>{t(card.p)}</p>
                 <p style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.07em", textTransform: "uppercase", color: "var(--fg-accent)", padding: "0 24px 4px", marginTop: "12px" }}>{t(card.tag)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ASKS: what the team can ask ── */}
+      <section className="section section-alt" id="asks">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-eyebrow">{t("asks.eyebrow")}</span>
+            <h2>
+              <TextAnimate as="span" by="word" once={true}>{t("asks.h2a")}</TextAnimate>
+              {" "}
+              <TextAnimate as="span" by="word" once={true} delay={0.5} className="light">{t("asks.h2b")}</TextAnimate>
+            </h2>
+            <p className="section-lead">{t("asks.lead")}</p>
+          </div>
+          <div className="solution-grid">
+            {STRINGS[lang].asks.cards.map((c, i) => (
+              <div className="sol-card" key={i}>
+                <div className="sol-dept">{c.who}</div>
+                <div><h4>{c.q}</h4><p>{c.p}</p></div>
               </div>
             ))}
           </div>
@@ -641,6 +666,7 @@ export default function Home() {
         <div className="container footer-inner">
           <span className="wm"><b>MAZO</b><span>LOGIC</span></span>
           <div className="footer-links">
+            <a href="/">{t("nav.offer")}</a>
             <a href="/privacy">{t("footer.privacy")}</a>
             <a href="/audit">{lang === "pl" ? "Audyt AI" : "AI Audit"}</a>
             <a href="mailto:info@mazologic.com">{t("footer.contact")}</a>

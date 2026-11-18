@@ -52,6 +52,7 @@ export default function Home() {
     ["#running", o.nav.running],
     ["#training", o.nav.training],
     ["#how", o.nav.how],
+    ["/ai-os", o.nav.brain],
   ] as const;
 
   const H2 = ({ a, b }: { a: string; b: string }) => (

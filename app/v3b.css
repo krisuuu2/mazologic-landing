@@ -719,6 +719,13 @@ a.wordmark, a:has(.wm) { text-decoration: none; }
 }
 
 /* ── RESPONSIVE ── */
+/* five nav links (PL labels) need ~1120px before they wrap */
+.nav-link { white-space: nowrap; }
+@media (max-width: 1120px) {
+  .hamburger { display: flex; width: 44px; height: 44px; }
+  .nav-links, .nav-cta-desktop, .nav-right .toggle-group { display: none; }
+}
+
 @media (max-width: 1024px) {
   .hamburger { display: flex; }
   .nav-links { display: none; }
