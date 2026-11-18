@@ -1,0 +1,182 @@
+/* Landing /nod — wszystkie wartości z tokens.css (DS MazoLogic). */
+
+/* Tu nie ma menu-hamburgera, więc przełącznik języka zostaje widoczny na każdej szerokości. */
+.nod .nav-right .toggle-group { display: flex; }
+
+.nod .toggle-group.lang a {
+  display: flex; align-items: center;
+  padding: var(--s-1) var(--s-3);
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono); font-weight: var(--fw-semi); font-size: var(--fs-12);
+  letter-spacing: 0.05em; color: var(--fg-3); text-decoration: none;
+  transition: background var(--dur-fast) var(--ease-soft), color var(--dur-fast) var(--ease-soft);
+}
+.nod .toggle-group.lang a:hover { color: var(--fg-1); }
+.nod .toggle-group.lang a.active { background: var(--bg-inverse); color: var(--fg-inverse); box-shadow: var(--shadow-xs); }
+.nod .toggle-group.lang a:focus-visible,
+.nod a:focus-visible, .nod summary:focus-visible, .nod .btn:focus-visible {
+  outline: 2px solid var(--fg-accent); outline-offset: 2px;
+}
+
+/* ── HERO ── */
+.nod-hero {
+  position: relative;
+  padding: var(--s-20) 0 var(--s-24);
+  background: var(--grad-hero-light);
+  overflow: hidden;
+}
+.nod-hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: var(--grad-mesh-grid);
+  background-size: var(--s-16) var(--s-16);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+.nod-hero-grid {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--s-16); align-items: center;
+}
+.nod-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-44), 5.4vw, var(--fs-60));
+  font-weight: var(--fw-bold); line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight); color: var(--fg-1);
+  margin: 0 0 var(--s-6); text-wrap: balance;
+}
+.nod-h1 .light { font-weight: var(--fw-light); color: var(--fg-3); }
+.nod-lead {
+  font-size: var(--fs-18); line-height: var(--lh-normal); color: var(--fg-2);
+  max-width: 34em; margin: 0 0 var(--s-8);
+}
+.nod-facts {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: var(--s-2);
+}
+.nod-facts li {
+  font-family: var(--font-mono); font-size: var(--fs-12); letter-spacing: 0.02em;
+  color: var(--fg-2); background: var(--bg-surface);
+  border: 1px solid var(--border-soft); border-radius: var(--r-pill);
+  padding: var(--s-1) var(--s-3);
+}
+
+/* ── FORM ── */
+.nod-form-wrap { scroll-margin-top: var(--s-24); }
+.nod-form {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg), var(--shadow-inset-top);
+  padding: var(--s-8);
+}
+.nod-form h2 {
+  font-family: var(--font-display); font-size: var(--fs-24); font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-snug); line-height: var(--lh-snug);
+  color: var(--fg-1); margin: 0 0 var(--s-2);
+}
+.nod-form-sub { font-size: var(--fs-14); line-height: var(--lh-normal); color: var(--fg-3); margin: 0 0 var(--s-6); }
+.nod-label { display: block; font-size: var(--fs-14); font-weight: var(--fw-medium); color: var(--fg-2); margin-bottom: var(--s-2); }
+.nod-input {
+  width: 100%; font: inherit; font-size: var(--fs-16);
+  color: var(--fg-1); background: var(--bg-canvas);
+  border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  padding: var(--s-3) var(--s-4);
+  transition: border-color var(--dur-fast) var(--ease-soft), box-shadow var(--dur-fast) var(--ease-soft);
+}
+.nod-input::placeholder { color: var(--fg-4); }
+.nod-input:focus { outline: none; border-color: var(--border-accent); box-shadow: var(--shadow-glow-accent); }
+.nod-input[aria-invalid="true"] { border-color: var(--danger); }
+.nod-turnstile { margin: var(--s-4) 0; min-height: 65px; }
+.nod-submit { width: 100%; justify-content: center; }
+.nod-submit:disabled { opacity: 0.7; cursor: progress; }
+.nod-err { color: var(--danger); font-size: var(--fs-14); margin: var(--s-3) 0 0; }
+.nod-consent { font-size: var(--fs-12); line-height: var(--lh-normal); color: var(--fg-3); margin: var(--s-4) 0 0; }
+.nod-consent a { color: var(--fg-accent); }
+.nod-form-ok { text-align: center; }
+.nod-form-ok p { font-size: var(--fs-14); color: var(--fg-2); margin: 0; }
+.nod-ok-mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--s-12); height: var(--s-12); margin-bottom: var(--s-4);
+  border-radius: var(--r-pill); background: var(--accent-soft); color: var(--fg-accent);
+  font-size: var(--fs-24); font-weight: var(--fw-bold);
+}
+
+/* ── SECTIONS ── */
+.nod-section-lead { font-size: var(--fs-16); color: var(--fg-3); margin: var(--s-4) 0 0; }
+.nod-h2 {
+  font-family: var(--font-display); font-size: clamp(var(--fs-32), 4vw, var(--fs-44));
+  font-weight: var(--fw-bold); letter-spacing: var(--tracking-tight); line-height: var(--lh-snug);
+  color: var(--fg-1); margin: 0;
+}
+.nod-center { text-align: center; }
+.nod-video .btn { margin-top: var(--s-8); }
+
+.nod-benefits {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4);
+}
+.nod-card {
+  background: var(--bg-raised); border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg); padding: var(--s-6);
+  box-shadow: var(--shadow-sm);
+}
+.nod-card h3 {
+  font-family: var(--font-display); font-size: var(--fs-18); font-weight: var(--fw-semi);
+  letter-spacing: var(--tracking-snug); color: var(--fg-1); margin: 0 0 var(--s-2);
+}
+.nod-card p { font-size: var(--fs-14); line-height: var(--lh-normal); color: var(--fg-2); margin: 0; }
+
+.nod-steps {
+  list-style: none; margin: 0 auto var(--s-12); padding: 0; max-width: 880px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4);
+}
+.nod-step {
+  display: flex; gap: var(--s-4); align-items: flex-start;
+  border: 1px solid var(--border-soft); border-radius: var(--r-lg);
+  padding: var(--s-6); background: var(--bg-surface);
+  scroll-margin-top: var(--s-20);
+}
+.nod-step-num {
+  font-family: var(--font-mono); font-size: var(--fs-14); font-weight: var(--fw-semi);
+  color: var(--fg-accent); border: 1px solid var(--border-accent); border-radius: var(--r-pill);
+  padding: var(--s-1) var(--s-2); line-height: var(--lh-snug); flex-shrink: 0;
+}
+.nod-step h3 {
+  font-family: var(--font-display); font-size: var(--fs-18); font-weight: var(--fw-semi);
+  color: var(--fg-1); margin: 0 0 var(--s-1);
+}
+.nod-step p { font-size: var(--fs-14); line-height: var(--lh-normal); color: var(--fg-2); margin: 0; }
+
+.nod-faq-wrap { max-width: 800px; }
+.nod-faq { display: grid; gap: var(--s-3); }
+.nod-faq-item {
+  border: 1px solid var(--border-soft); border-radius: var(--r-lg);
+  background: var(--bg-raised); padding: 0 var(--s-6);
+}
+.nod-faq-item summary {
+  cursor: pointer; list-style: none;
+  font-family: var(--font-display); font-size: var(--fs-18); font-weight: var(--fw-semi);
+  color: var(--fg-1); padding: var(--s-5) 0;
+  display: flex; justify-content: space-between; gap: var(--s-4);
+}
+.nod-faq-item summary::-webkit-details-marker { display: none; }
+.nod-faq-item summary::after { content: "+"; color: var(--fg-3); font-weight: var(--fw-light); transition: transform var(--dur-base) var(--ease-out); }
+.nod-faq-item[open] summary::after { transform: rotate(45deg); }
+.nod-faq-item p { font-size: var(--fs-16); line-height: var(--lh-normal); color: var(--fg-2); margin: 0 0 var(--s-5); }
+.nod-disclaimer { text-align: center; font-size: var(--fs-12); color: var(--fg-3); margin: var(--s-10) 0 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .nod-hero-grid { grid-template-columns: 1fr; gap: var(--s-10); }
+  .nod-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .nod .container { padding: 0 var(--s-4); }
+  .nod-hero { padding: var(--s-12) 0 var(--s-16); }
+  .nod-form { padding: var(--s-6); }
+  .nod-benefits, .nod-steps { grid-template-columns: 1fr; }
+  .nod .section { padding: var(--s-16) 0; }
+  .nod .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nod-faq-item summary::after, .nod-input { transition: none; }
+}
