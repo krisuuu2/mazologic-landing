@@ -31,6 +31,7 @@ export type NodCopy = {
     okText: string;
     errEmail: string;
     errCaptcha: string;
+    errWidget: string;
     errServer: string;
     consent: string;
     privacy: string;
@@ -79,6 +80,7 @@ export const COPY: Record<NodLang, NodCopy> = {
       okText: "Sprawdź skrzynkę. Jeśli maila nie ma w ciągu kilku minut, zajrzyj do spamu albo do zakładki Oferty.",
       errEmail: "Wpisz poprawny adres e-mail.",
       errCaptcha: "Potwierdź, że nie jesteś botem, i spróbuj jeszcze raz.",
+      errWidget: "Weryfikacja antybotowa się nie wczytała. Odśwież stronę albo wyłącz na chwilę blokery w przeglądarce.",
       errServer: "Nie udało się wysłać. Spróbuj za chwilę albo napisz na info@mazologic.com.",
       consent:
         "Wysyłając formularz, zgadzasz się na zapis adresu przez MazoLogic i okazjonalne maile o Nodzie i automatyzacjach. Wypiszesz się jednym kliknięciem.",
@@ -151,6 +153,7 @@ export const COPY: Record<NodLang, NodCopy> = {
       okText: "Check your inbox. If the email is not there within a few minutes, look in spam or the Promotions tab.",
       errEmail: "Enter a valid email address.",
       errCaptcha: "Confirm you are not a bot and try again.",
+      errWidget: "The bot check did not load. Refresh the page or briefly turn off blockers in your browser.",
       errServer: "Sending failed. Try again in a moment or write to info@mazologic.com.",
       consent:
         "By sending this form you agree that MazoLogic stores your address and sends occasional emails about Nod and automation. Unsubscribe with one click.",

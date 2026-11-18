@@ -40,28 +40,32 @@ export default function NodForm({ lang, t }: { lang: NodLang; t: NodCopy["form"]
   const [email, setEmail] = useState("");
   const [state, setState] = useState<State>("idle");
   const [err, setErr] = useState("");
+  const [widgetErr, setWidgetErr] = useState("");
 
   useEffect(() => {
     let alive = true;
     loadTurnstile().then(ts => {
-      if (!alive || !box.current || widget.current) return;
+      if (!alive || !box.current?.isConnected || widget.current) return;
       widget.current = ts.render(box.current, {
         sitekey: SITE_KEY,
         action: "nod_commands",
         language: lang,
         theme: "auto",
         size: "flexible",
-        callback: (tok: string) => setToken(tok),
+        callback: (tok: string) => { setToken(tok); setWidgetErr(""); },
         "expired-callback": () => setToken(""),
-        "error-callback": () => setToken(""),
+        "timeout-callback": () => setToken(""),
+        // Kod błędu widać pod widżetem, żeby dało się go zgłosić bez otwierania konsoli.
+        "error-callback": (code: string) => { setToken(""); setWidgetErr(String(code || "?")); console.warn("turnstile error", code); },
+        "unsupported-callback": () => setWidgetErr("unsupported"),
       });
-    }).catch(() => setErr(t.errCaptcha));
+    }).catch(() => setWidgetErr("script"));
     return () => {
       alive = false;
-      if (widget.current && window.turnstile) window.turnstile.remove(widget.current);
+      try { if (widget.current && window.turnstile) window.turnstile.remove(widget.current); } catch { /* już usunięty */ }
       widget.current = null;
     };
-  }, [lang, t.errCaptcha]);
+  }, [lang]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -119,6 +123,7 @@ export default function NodForm({ lang, t }: { lang: NodLang; t: NodCopy["form"]
         aria-describedby={err ? "nod-err" : undefined}
       />
       <div ref={box} className="nod-turnstile" />
+      {widgetErr && !token && <p className="nod-err" role="alert">{t.errWidget} ({widgetErr})</p>}
       <button className="btn btn-primary btn-lg nod-submit" type="submit" disabled={state === "sending"}>
         <span>{state === "sending" ? t.sending : t.submit}</span>
         {state !== "sending" && <span className="arrow">→</span>}
