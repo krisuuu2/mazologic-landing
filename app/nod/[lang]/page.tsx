@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "../nod.css";
 import type { NodLang } from "../commands";
-import { BASE_URL, COPY, LANGS, VIDEO_URL, pageUrl } from "../content";
+import { BASE_URL, COPY, LANGS, VIDEO, pageUrl, videoUrl } from "../content";
 import NodForm from "../NodForm";
+import VideoEmbed from "../VideoEmbed";
 import LangSwitch from "../LangSwitch";
 
 export const dynamicParams = false;
@@ -13,6 +14,15 @@ export function generateStaticParams() {
 }
 
 const isLang = (l: string): l is NodLang => l === "pl" || l === "en";
+
+// "PT24M19S" → "24:19"
+function isoToClock(iso: string) {
+  const m = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(iso);
+  if (!m) return "";
+  const [h, min, s] = [Number(m[1] || 0), Number(m[2] || 0), Number(m[3] || 0)];
+  const ss = String(s).padStart(2, "0");
+  return h ? `${h}:${String(min).padStart(2, "0")}:${ss}` : `${min}:${ss}`;
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -45,10 +55,25 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 function jsonLd(lang: NodLang) {
   const t = COPY[lang];
   const url = pageUrl(lang);
+  const v = VIDEO[lang];
+  const videoLd = v && {
+    "@type": "VideoObject",
+    name: v.title,
+    description: t.metaDesc,
+    inLanguage: lang,
+    thumbnailUrl: [`${BASE_URL}${v.thumb.replace(/\.webp$/, ".jpg")}`, `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`],
+    uploadDate: v.uploadDate,
+    duration: v.duration,
+    contentUrl: videoUrl(v),
+    embedUrl: `https://www.youtube.com/embed/${v.id}`,
+    author: { "@type": "Person", name: "Krzysztof Łomonkiewicz" },
+  };
   return [
+    ...(videoLd ? [{ "@context": "https://schema.org", ...videoLd }] : []),
     {
       "@context": "https://schema.org",
       "@type": "HowTo",
+      ...(videoLd ? { video: videoLd } : {}),
       name: t.metaTitle,
       description: t.metaDesc,
       inLanguage: lang,
@@ -90,7 +115,7 @@ export default async function NodPage({ params }: { params: Promise<{ lang: stri
   const { lang } = await params;
   if (!isLang(lang)) notFound();
   const t = COPY[lang];
-  const video = VIDEO_URL[lang];
+  const video = VIDEO[lang];
 
   return (
     <div className="nod" lang={lang}>
@@ -169,11 +194,12 @@ export default async function NodPage({ params }: { params: Promise<{ lang: stri
         </section>
 
         {video && (
-          <section className="section section-alt">
+          <section id="film" className="section section-alt">
             <div className="container nod-center nod-video">
               <h2 className="nod-h2">{t.videoH}</h2>
               <p className="nod-section-lead">{t.videoP}</p>
-              <a className="btn btn-secondary btn-lg" href={video} target="_blank" rel="noopener noreferrer">{t.videoCta}</a>
+              <VideoEmbed id={video.id} title={video.title} thumb={video.thumb} playLabel={t.videoPlay} duration={isoToClock(video.duration)} />
+              <a className="btn btn-secondary btn-lg" href={videoUrl(video)} target="_blank" rel="noopener noreferrer">{t.videoCta}</a>
             </div>
           </section>
         )}

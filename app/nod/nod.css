@@ -110,6 +110,25 @@
 }
 .nod-center { text-align: center; }
 .nod-video .btn { margin-top: var(--s-8); }
+.nod-player {
+  position: relative; display: block; width: 100%; max-width: 880px;
+  margin: var(--s-10) auto 0; aspect-ratio: 16 / 9;
+  border-radius: var(--r-xl); overflow: hidden;
+  border: 1px solid var(--border-soft); background: var(--bg-canvas);
+  box-shadow: var(--shadow-lg);
+}
+.nod-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.nod-player-facade { padding: 0; cursor: pointer; font: inherit; }
+.nod-player-facade img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--dur-base) var(--ease-out); }
+.nod-player-facade:hover img { transform: scale(1.02); }
+/* Pigułka w rogu: środek miniaturki to tytuł i twarz, więc nic ich nie zasłania. */
+.nod .nod-player .nod-play {
+  position: absolute; right: var(--s-6); bottom: var(--s-6); margin: 0;
+  gap: var(--s-2); pointer-events: none;
+  transition: transform var(--dur-fast) var(--ease-soft);
+}
+.nod-player-facade:hover .nod-play { transform: scale(1.04); }
+.nod-player-facade:focus-visible { outline: 2px solid var(--fg-accent); outline-offset: 3px; }
 
 .nod-benefits {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4);
@@ -174,9 +193,13 @@
   .nod-hero { padding: var(--s-12) 0 var(--s-16); }
   .nod-form { padding: var(--s-6); }
   .nod-benefits, .nod-steps { grid-template-columns: 1fr; }
+  .nod .nod-player .nod-play { right: var(--s-3); bottom: var(--s-3); padding: var(--s-2) var(--s-3); font-size: var(--fs-14); }
+  .nod-play-label { display: none; }
+  .nod-player { margin-top: var(--s-8); border-radius: var(--r-lg); }
   .nod .section { padding: var(--s-16) 0; }
   .nod .footer-inner { flex-direction: column; align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .nod-faq-item summary::after, .nod-input { transition: none; }
+  .nod-faq-item summary::after, .nod-input, .nod-player-facade img, .nod-play { transition: none; }
+  .nod-player-facade:hover img { transform: none; }
 }

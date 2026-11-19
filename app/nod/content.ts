@@ -4,8 +4,25 @@ export const BASE_URL = "https://mazologic.com";
 export const LANGS: NodLang[] = ["pl", "en"];
 export const pageUrl = (lang: NodLang) => `${BASE_URL}/nod/${lang}`;
 
-// Link do filmu na YouTube. Pusty = sekcja z linkiem się nie pokazuje.
-export const VIDEO_URL: Record<NodLang, string> = { pl: "", en: "" };
+// Film na YouTube dla danego języka. null = sekcja z filmem się nie pokazuje.
+export type NodVideo = {
+  id: string;
+  title: string;
+  duration: string; // ISO 8601
+  uploadDate: string; // YYYY-MM-DD
+  thumb: string; // ścieżka w /public, 1280×720
+};
+export const VIDEO: Record<NodLang, NodVideo | null> = {
+  pl: {
+    id: "8p53197WHpw",
+    title: "Własny agent AI na serwerze: Nod od n8n krok po kroku",
+    duration: "PT24M19S",
+    uploadDate: "2026-11-19",
+    thumb: "/nod/film-pl.webp",
+  },
+  en: null,
+};
+export const videoUrl = (v: NodVideo) => `https://www.youtube.com/watch?v=${v.id}`;
 
 type Benefit = { h: string; p: string };
 type HowStep = { h: string; p: string };
@@ -48,6 +65,7 @@ export type NodCopy = {
   videoH: string;
   videoP: string;
   videoCta: string;
+  videoPlay: string;
   faqEyebrow: string;
   faqH: string;
   faq: Faq[];
@@ -112,8 +130,9 @@ export const COPY: Record<NodLang, NodCopy> = {
     ],
     howCta: "Wyślij mi komendy",
     videoH: "Cały tutorial na YouTube",
-    videoP: "Dwie części: instalacja na serwerze oraz model, Telegram, WhatsApp i aplikacje.",
+    videoP: "24 minuty, od konta na Hetznerze po pierwszą głosówkę na Telegramie. Komendy z filmu wyślemy Ci mailem.",
     videoCta: "Obejrzyj na YouTube",
+    videoPlay: "Odtwórz film",
     faqEyebrow: "FAQ",
     faqH: "Najczęstsze pytania",
     faq: [
@@ -187,6 +206,7 @@ export const COPY: Record<NodLang, NodCopy> = {
     videoH: "The full tutorial on YouTube",
     videoP: "Two parts: the server install, then the model, Telegram, WhatsApp and apps.",
     videoCta: "Watch on YouTube",
+    videoPlay: "Play video",
     faqEyebrow: "FAQ",
     faqH: "Common questions",
     faq: [
